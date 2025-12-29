@@ -1,0 +1,72 @@
+{
+  "academicYear": "2025-2026",
+  "events": [
+    {
+      "id": 1,
+      "titleBn": "বার্ষিক ক্রীড়া প্রতিযোগিতা",
+      "titleEn": "Annual Sports Competition",
+      "date": "2025-02-15",
+      "time": "09:00",
+      "venue": "স্কুল মাঠ",
+      "venueEn": "School Ground",
+      "description": "সকল শ্রেণির ছাত্র-ছাত্রীদের জন্য বার্ষিক ক্রীড়া প্রতিযোগিতা",
+      "type": "sports",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "titleBn": "বার্ষিক সাংস্কৃতিক অনুষ্ঠান",
+      "titleEn": "Annual Cultural Program",
+      "date": "2025-03-20",
+      "time": "10:00",
+      "venue": "স্কুল অডিটোরিয়াম",
+      "venueEn": "School Auditorium",
+      "description": "বার্ষিক সাংস্কৃতিক অনুষ্ঠান ও পুরস্কার বিতরণী",
+      "type": "cultural",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "titleBn": "অভিভাবক সমাবেশ",
+      "titleEn": "Parents Meeting",
+      "date": "2025-04-25",
+      "time": "11:00",
+      "venue": "স্কুল হলরুম",
+      "venueEn": "School Hall Room",
+      "description": "প্রথম সাময়িক পরীক্ষার ফলাফল নিয়ে অভিভাবক সমাবেশ",
+      "type": "meeting",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "titleBn": "বিজ্ঞান মেলা",
+      "titleEn": "Science Fair",
+      "date": "2025-07-10",
+      "time": "09:00",
+      "venue": "স্কুল প্রাঙ্গণ",
+      "venueEn": "School Campus",
+      "description": "বার্ষিক বিজ্ঞান মেলা ও প্রজেক্ট প্রদর্শনী",
+      "type": "academic",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "titleBn": "বার্ষিক পুরস্কার বিতরণী",
+      "titleEn": "Annual Prize Distribution",
+      "date": "2025-12-30",
+      "time": "10:00",
+      "venue": "স্কুল অডিটোরিয়াম",
+      "venueEn": "School Auditorium",
+      "description": "বার্ষিক পরীক্ষার ফলাফল ও পুরস্কার বিতরণী অনুষ্ঠান",
+      "type": "ceremony",
+      "isActive": true
+    }
+  ],
+  "eventTypes": {
+    "sports": { "colorBn": "সবুজ", "color": "#4CAF50", "icon": "fas fa-running" },
+    "cultural": { "colorBn": "বেগুনি", "color": "#9C27B0", "icon": "fas fa-music" },
+    "meeting": { "colorBn": "নীল", "color": "#2196F3", "icon": "fas fa-users" },
+    "academic": { "colorBn": "কমলা", "color": "#FF9800", "icon": "fas fa-flask" },
+    "ceremony": { "colorBn": "সোনালি", "color": "#FFC107", "icon": "fas fa-award" }
+  }
+}

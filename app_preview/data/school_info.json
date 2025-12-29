@@ -1,0 +1,116 @@
+{
+  "schoolInfo": {
+    "nameBn": "ডেমো উচ্চ বিদ্যালয়",
+    "nameEn": "Demo High School",
+    "establishedYear": 1990,
+    "motto": "শিক্ষাই আলো, জ্ঞানই শক্তি",
+    "mottoEn": "Education is Light, Knowledge is Power",
+    "eiin": "123456",
+    "logoUrl": "",
+    "address": {
+      "bn": "গ্রাম: ডেমো, উপজেলা: ডেমো, জেলা: ঢাকা",
+      "en": "Village: Demo, Upazila: Demo, District: Dhaka"
+    },
+    "contact": {
+      "phone": "+880 2-1234567",
+      "mobile": "01712345678",
+      "email": "info@demo.edu.bd",
+      "website": "https://demo.edu.bd"
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/demoschool",
+      "youtube": "https://youtube.com/@demoschool",
+      "twitter": "https://twitter.com/demoschool",
+      "instagram": "https://instagram.com/demoschool"
+    },
+    "appLinks": {
+      "playStore": "https://play.google.com/store/apps/details?id=com.demo.school",
+      "appStore": "https://apps.apple.com/app/demo-school/id123456789"
+    }
+  },
+  "aboutSection": {
+    "description": [
+      "ডেমো উচ্চ বিদ্যালয় ১৯৯০ সালে প্রতিষ্ঠিত একটি ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান। আমরা ৬ষ্ঠ থেকে ১০ম শ্রেণি পর্যন্ত মানসম্মত শিক্ষা প্রদান করে আসছি।",
+      "আমাদের লক্ষ্য প্রতিটি শিক্ষার্থীকে জ্ঞান, দক্ষতা ও নৈতিক মূল্যবোধে সমৃদ্ধ করে দেশের যোগ্য নাগরিক হিসেবে গড়ে তোলা।"
+    ],
+    "features": [
+      "অভিজ্ঞ শিক্ষকমণ্ডলী",
+      "আধুনিক কম্পিউটার ল্যাব",
+      "বিজ্ঞান গবেষণাগার",
+      "সমৃদ্ধ লাইব্রেরি",
+      "খেলার মাঠ",
+      "ডিজিটাল ক্লাসরুম"
+    ],
+    "image": "img/school_view.png"
+  },
+  "fees": {
+    "admission": {
+      "play": 2000,
+      "nursery": 2500,
+      "kg": 3000,
+      "class1to5": 3500,
+      "class6to8": 4000,
+      "class9to10": 5000
+    },
+    "monthly": {
+      "play": 300,
+      "nursery": 350,
+      "kg": 400,
+      "class1to5": 450,
+      "class6to8": 500,
+      "class9to10": 600
+    },
+    "examFee": {
+      "monthly": 50,
+      "term": 100,
+      "annual": 200
+    }
+  },
+  "paymentMethods": [
+    {
+      "name": "বিকাশ",
+      "nameEn": "bKash",
+      "number": "01712345678",
+      "type": "mobile",
+      "icon": "fas fa-mobile-alt",
+      "color": "#E2136E"
+    },
+    {
+      "name": "নগদ",
+      "nameEn": "Nagad",
+      "number": "01812345678",
+      "type": "mobile",
+      "icon": "fas fa-wallet",
+      "color": "#FF6B00"
+    },
+    {
+      "name": "ব্যাংক",
+      "nameEn": "Bank",
+      "accountName": "Demo High School",
+      "accountNumber": "1234567890",
+      "bankName": "Sonali Bank",
+      "branch": "Demo Branch",
+      "type": "bank",
+      "icon": "fas fa-university",
+      "color": "#1976D2"
+    }
+  ],
+  "notices": [
+    {
+      "id": 1,
+      "title": "ভর্তি বিজ্ঞপ্তি ২০২৬",
+      "titleEn": "Admission Notice 2026",
+      "date": "2025-12-01",
+      "content": "২০২৬ শিক্ষাবর্ষের জন্য ভর্তি কার্যক্রম শুরু হয়েছে।",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "title": "শীতকালীন ছুটি",
+      "titleEn": "Winter Vacation",
+      "date": "2025-12-15",
+      "content": "২০ ডিসেম্বর থেকে ৫ জানুয়ারি পর্যন্ত শীতকালীন ছুটি থাকবে।",
+      "isActive": true
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডেমো উচ্চ বিদ্যালয় - Demo High School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-school"></i>
+                <span>ডেমো উচ্চ বিদ্যালয়</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">হোম</a></li>
+                <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                <li><a href="#teachers">শিক্ষকবৃন্দ</a></li>
+                <li><a href="#routine">ক্লাস রুটিন</a></li>
+                <li><a href="#calendar">ক্যালেন্ডার</a></li>
+                <li><a href="#notice">নোটিশ</a></li>
+                <li><a href="#gallery">গ্যালারি</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="থিম পরিবর্তন">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="img/school_view.png" alt="ডেমো উচ্চ বিদ্যালয়">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate-fade-up">ডেমো উচ্চ বিদ্যালয়</h1>
+            <p class="animate-fade-up delay-1">শিক্ষাই আলো, জ্ঞানই শক্তি</p>
+            <p class="tagline animate-fade-up delay-2">প্রতিষ্ঠাকাল: ১৯৮৫ | EIIN: 123456</p>
+            <div class="hero-buttons animate-fade-up delay-3">
+                <a href="#download" class="btn btn-primary">
+                    <i class="fas fa-download"></i> অ্যাপ ডাউনলোড
+                </a>
+                <a href="app_preview/app_preview.html" class="btn btn-secondary">
+                    <i class="fas fa-play-circle"></i> অ্যাপ অনলাইনে টেস্ট করুন
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <i class="fas fa-info-circle"></i> আরও জানুন
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3 class="counter" data-target="1500">0</h3>
+                    <p>শিক্ষার্থী</p>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3 class="counter" data-target="45">0</h3>
+                    <p>শিক্ষক</p>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <i class="fas fa-trophy"></i>
+                    <h3 class="counter" data-target="98">0</h3>
+                    <p>পাসের হার %</p>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <i class="fas fa-award"></i>
+                    <h3 class="counter" data-target="40">0</h3>
+                    <p>বছরের অভিজ্ঞতা</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">আমাদের সম্পর্কে</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll" id="aboutText">
+                    <!-- About content will be loaded from school_info.json -->
+                </div>
+                <div class="about-image animate-on-scroll" id="aboutImage">
+                    <!-- Image will be loaded from school_info.json -->
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+    <!-- Teachers Section -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">আমাদের শিক্ষকবৃন্দ</h2>
+            <p class="section-subtitle animate-on-scroll">অভিজ্ঞ ও নিবেদিতপ্রাণ শিক্ষকমণ্ডলী</p>
+            <div class="teachers-grid" id="teachersGrid">
+                <!-- Teachers will be loaded dynamically from teachers.json -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Class Routine Section -->
+    <section class="routine" id="routine">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">ক্লাস রুটিন</h2>
+            <p class="section-subtitle animate-on-scroll">শ্রেণি অনুযায়ী সাপ্তাহিক ক্লাস রুটিন</p>
+            
+            <div class="routine-tabs animate-on-scroll" id="routineTabs">
+                <!-- Tabs will be loaded dynamically -->
+            </div>
+
+            <div class="routine-table-wrapper animate-on-scroll">
+                <table class="routine-table">
+                    <thead id="routineHead">
+                        <!-- Header will be loaded dynamically -->
+                    </thead>
+                    <tbody id="routineBody">
+                        <!-- Routine will be loaded dynamically from class_routine.json -->
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary download-routine">
+                <i class="fas fa-download"></i> রুটিন ডাউনলোড করুন
+            </button>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section" id="calendar">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">শিক্ষাবর্ষ ক্যালেন্ডার ২০২৬</h2>
+            <p class="section-subtitle animate-on-scroll">মাসিক ক্যালেন্ডার ও ছুটির তালিকা</p>
+            
+            <div class="calendar-wrapper animate-on-scroll">
+                <div class="calendar-header">
+                    <button class="cal-nav-btn" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="currentMonthYear">জানুয়ারি ২০২৬</h3>
+                    <button class="cal-nav-btn" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <div class="day-header">রবি</div>
+                    <div class="day-header">সোম</div>
+                    <div class="day-header">মঙ্গল</div>
+                    <div class="day-header">বুধ</div>
+                    <div class="day-header">বৃহঃ</div>
+                    <div class="day-header holiday-header">শুক্র</div>
+                    <div class="day-header">শনি</div>
+                </div>
+                
+                <div class="calendar-legend">
+                    <span class="legend-item"><span class="dot holiday"></span> সাপ্তাহিক ছুটি (শুক্রবার)</span>
+                    <span class="legend-item"><span class="dot special-holiday"></span> সরকারি/ধর্মীয় ছুটি</span>
+                    <span class="legend-item"><span class="dot today"></span> আজকের তারিখ</span>
+                </div>
+            </div>
+            
+            <div class="holiday-list animate-on-scroll">
+                <h4><i class="fas fa-calendar-times"></i> এই মাসের ছুটি</h4>
+                <div id="monthlyHolidayList">
+                    <!-- Holidays will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="all-holidays animate-on-scroll">
+                <h4><i class="fas fa-list"></i> ২০২৬ সালের সকল ছুটি</h4>
+                <div class="holiday-table-wrapper">
+                    <table class="holiday-table" id="allHolidaysTable">
+                        <thead>
+                            <tr>
+                                <th>তারিখ</th>
+                                <th>বার</th>
+                                <th>ছুটির নাম</th>
+                                <th>ধরন</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allHolidaysBody">
+                            <!-- All holidays will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+""
+
+    <!-- Notice Section -->
+    <section class="notice" id="notice">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">নোটিশ বোর্ড</h2>
+            <p class="section-subtitle animate-on-scroll">সর্বশেষ ঘোষণা ও বিজ্ঞপ্তি</p>
+            <div class="notice-grid" id="noticeGrid">
+                <!-- Notices will be loaded dynamically from notices.json -->
+            </div>
+            <a href="#" class="btn btn-outline view-all-notices">
+                <i class="fas fa-list"></i> সকল নোটিশ দেখুন
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">ফটো গ্যালারি</h2>
+            <p class="section-subtitle animate-on-scroll">আমাদের স্কুলের কিছু মুহূর্ত</p>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/school_view.png', 'স্কুল ভবন')">
+                    <img src="img/school_view.png" alt="স্কুল ভবন">
+                    <div class="gallery-caption">স্কুল ভবন</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/science_lab.png', 'বিজ্ঞান গবেষণাগার')">
+                    <img src="img/science_lab.png" alt="বিজ্ঞান গবেষণাগার">
+                    <div class="gallery-caption">বিজ্ঞান গবেষণাগার</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/computer_lab.jpg', 'কম্পিউটার ল্যাব')">
+                    <img src="img/computer_lab.jpg" alt="কম্পিউটার ল্যাব">
+                    <div class="gallery-caption">কম্পিউটার ল্যাব</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/library.jpg', 'লাইব্রেরি')">
+                    <img src="img/library.jpg" alt="লাইব্রেরি">
+                    <div class="gallery-caption">লাইব্রেরি</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/play_ground.jpg', 'খেলার মাঠ')">
+                    <img src="img/play_ground.jpg" alt="খেলার মাঠ">
+                    <div class="gallery-caption">খেলার মাঠ</div>
+                </div>
+                <div class="gallery-item animate-on-scroll" onclick="openGalleryPopup('img/class_room.png', 'ক্লাসরুম')">
+                    <img src="img/class_room.png" alt="ক্লাসরুম">
+                    <div class="gallery-caption">ক্লাসরুম</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Popup -->
+    <div class="gallery-popup" id="galleryPopup" onclick="closeGalleryPopup()">
+        <span class="popup-close">&times;</span>
+        <img src="" alt="" id="popupImage">
+        <div class="popup-caption" id="popupCaption"></div>
+    </div>
+
+    <!-- App Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-text animate-on-scroll">
+                    <h2>আমাদের অ্যাপ ডাউনলোড করুন</h2>
+                    <p>
+                        স্কুল ম্যানেজমেন্ট অ্যাপ দিয়ে সহজেই দেখুন আপনার সন্তানের রেজাল্ট, 
+                        উপস্থিতি, ফি পেমেন্ট এবং আরও অনেক কিছু।
+                    </p>
+                    <ul class="app-features">
+                        <li><i class="fas fa-check"></i> পরীক্ষার ফলাফল দেখুন</li>
+                        <li><i class="fas fa-check"></i> উপস্থিতি ট্র্যাক করুন</li>
+                        <li><i class="fas fa-check"></i> অনলাইনে ফি পরিশোধ করুন</li>
+                        <li><i class="fas fa-check"></i> ক্লাস রুটিন দেখুন</li>
+                        <li><i class="fas fa-check"></i> শিক্ষকদের সাথে যোগাযোগ করুন</li>
+                        <li><i class="fas fa-check"></i> অনলাইনে ভর্তি আবেদন করুন</li>
+                    </ul>
+                    <div class="download-buttons">
+                        <a href="app_preview/app_preview.html" class="store-btn">
+                            <i class="fas fa-play-circle"></i>
+                            <div>
+                                <small>অনলাইনে</small>
+                                <span>টেস্ট করুন</span>
+                            </div>
+                        </a>
+                        <a href="#" class="store-btn">
+                            <img src="img/android.png" alt="Android" class="store-icon">
+                            <div>
+                                <small>অ্যাপ</small>
+                                <span>ডাউনলোড</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="download-image animate-on-scroll">
+                    <div class="phone-wrapper">
+                        <a href="app_preview/app_preview.html" class="fullscreen-btn" title="ফুলস্ক্রিনে দেখুন">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                        <div class="phone-mockup">
+                            <div class="phone-notch"></div>
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>School App</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+""
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">যোগাযোগ করুন</h2>
+            <p class="section-subtitle animate-on-scroll">আমাদের সাথে যোগাযোগ করতে নিচের তথ্য ব্যবহার করুন</p>
+            <div class="contact-wrapper">
+                <div class="contact-info animate-on-scroll">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>ঠিকানা</h3>
+                        <p>১২৩ স্কুল রোড, ডেমো এলাকা<br>ঢাকা-১২০০, বাংলাদেশ</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>ফোন</h3>
+                        <p>+৮৮০ ২-১২৩৪৫৬৭<br>+৮৮০ ১৭০০-০০০০০০</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>ইমেইল</h3>
+                        <p>info@demo.edu.bd<br>admission@demo.edu.bd</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>অফিস সময়</h3>
+                        <p>রবি - বৃহস্পতি: সকাল ৯টা - বিকাল ৪টা<br>শুক্র - শনি: বন্ধ</p>
+                    </div>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">আপনার নাম</label>
+                            <input type="text" id="name" name="name" required placeholder="নাম লিখুন">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ইমেইল</label>
+                            <input type="email" id="email" name="email" required placeholder="ইমেইল লিখুন">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">ফোন নম্বর</label>
+                            <input type="tel" id="phone" name="phone" placeholder="ফোন নম্বর লিখুন">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">বিষয়</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">বিষয় নির্বাচন করুন</option>
+                                <option value="admission">ভর্তি সংক্রান্ত</option>
+                                <option value="fee">ফি সংক্রান্ত</option>
+                                <option value="result">রেজাল্ট সংক্রান্ত</option>
+                                <option value="other">অন্যান্য</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">বার্তা</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="আপনার বার্তা লিখুন"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> বার্তা পাঠান
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">আমাদের অবস্থান</h2>
+            <div class="map-wrapper animate-on-scroll">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.902756848!2d90.39945!3d23.750903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ1JzAzLjIiTiA5MMKwMjMnNTguMCJF!5e0!3m2!1sen!2sbd!4v1234567890"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="স্কুলের অবস্থান">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3><i class="fas fa-school"></i> ডেমো উচ্চ বিদ্যালয়</h3>
+                    <p>শিক্ষাই আলো, জ্ঞানই শক্তি। ১৯৮৫ সাল থেকে মানসম্মত শিক্ষা প্রদান করে আসছি।</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>দ্রুত লিংক</h4>
+                    <ul>
+                        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                        <li><a href="#teachers">শিক্ষকবৃন্দ</a></li>
+                        <li><a href="#routine">ক্লাস রুটিন</a></li>
+                        <li><a href="#notice">নোটিশ</a></li>
+                        <li><a href="#download">অ্যাপ ডাউনলোড</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>গুরুত্বপূর্ণ লিংক</h4>
+                    <ul>
+                        <li><a href="#">অনলাইন ভর্তি</a></li>
+                        <li><a href="#">ফলাফল দেখুন</a></li>
+                        <li><a href="#">ফি পরিশোধ</a></li>
+                        <li><a href="#">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="#">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>যোগাযোগ</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> ১২৩ স্কুল রোড, ঢাকা</p>
+                    <p><i class="fas fa-phone"></i> +৮৮০ ২-১২৩৪৫৬৭</p>
+                    <p><i class="fas fa-envelope"></i> info@demo.edu.bd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ২০২৫ ডেমো উচ্চ বিদ্যালয়। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="উপরে যান">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

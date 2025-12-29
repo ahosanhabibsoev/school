@@ -1,0 +1,95 @@
+{
+  "teachers": [
+    {
+      "id": "teacher_1",
+      "nameBn": "মোঃ আব্দুর রহমান",
+      "nameEn": "Md. Abdur Rahman",
+      "designationBn": "প্রধান শিক্ষক",
+      "designationEn": "Head Teacher",
+      "subjectBn": "বাংলা",
+      "subjectEn": "Bengali",
+      "phone": "01712345678",
+      "email": "abdur.rahman@demo.edu.bd",
+      "joiningYear": 2005,
+      "qualification": "M.A. (Bangla), B.Ed.",
+      "imageUrl": "",
+      "isActive": true
+    },
+    {
+      "id": "teacher_2",
+      "nameBn": "ফাতেমা খাতুন",
+      "nameEn": "Fatema Khatun",
+      "designationBn": "সহকারী প্রধান শিক্ষক",
+      "designationEn": "Assistant Head Teacher",
+      "subjectBn": "ইংরেজি",
+      "subjectEn": "English",
+      "phone": "01812345678",
+      "email": "fatema.khatun@demo.edu.bd",
+      "joiningYear": 2008,
+      "qualification": "M.A. (English), B.Ed.",
+      "imageUrl": "",
+      "isActive": true
+    },
+    {
+      "id": "teacher_3",
+      "nameBn": "মোঃ করিম উদ্দিন",
+      "nameEn": "Md. Karim Uddin",
+      "designationBn": "সিনিয়র শিক্ষক",
+      "designationEn": "Senior Teacher",
+      "subjectBn": "গণিত",
+      "subjectEn": "Mathematics",
+      "phone": "01912345678",
+      "email": "karim.uddin@demo.edu.bd",
+      "joiningYear": 2010,
+      "qualification": "M.Sc. (Mathematics), B.Ed.",
+      "imageUrl": "",
+      "isActive": true
+    },
+    {
+      "id": "teacher_4",
+      "nameBn": "রহিমা বেগম",
+      "nameEn": "Rahima Begum",
+      "designationBn": "শিক্ষক",
+      "designationEn": "Teacher",
+      "subjectBn": "বিজ্ঞান",
+      "subjectEn": "Science",
+      "phone": "01612345678",
+      "email": "rahima.begum@demo.edu.bd",
+      "joiningYear": 2012,
+      "qualification": "M.Sc. (Physics), B.Ed.",
+      "imageUrl": "",
+      "isActive": true
+    },
+    {
+      "id": "teacher_5",
+      "nameBn": "মোঃ সালাম",
+      "nameEn": "Md. Salam",
+      "designationBn": "শিক্ষক",
+      "designationEn": "Teacher",
+      "subjectBn": "সমাজ বিজ্ঞান",
+      "subjectEn": "Social Science",
+      "phone": "01512345678",
+      "email": "salam@demo.edu.bd",
+      "joiningYear": 2015,
+      "qualification": "M.A. (History), B.Ed.",
+      "imageUrl": "",
+      "isActive": true
+    },
+    {
+      "id": "teacher_6",
+      "nameBn": "নাজমা আক্তার",
+      "nameEn": "Nazma Akter",
+      "designationBn": "শিক্ষক",
+      "designationEn": "Teacher",
+      "subjectBn": "ধর্ম শিক্ষা",
+      "subjectEn": "Religion",
+      "phone": "01412345678",
+      "email": "nazma.akter@demo.edu.bd",
+      "joiningYear": 2018,
+      "qualification": "M.A. (Islamic Studies)",
+      "imageUrl": "",
+      "isActive": true
+    }
+  ]
+}
+

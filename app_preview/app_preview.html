@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ডেমো উচ্চ বিদ্যালয় - অ্যাপ প্রিভিউ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/regular.min.css">
+    <link rel="stylesheet" href="app_preview_style.css">
+</head>
+<body>
+    <div class="preview-container">
+        <!-- App Preview -->
+        <div class="app-preview-wrapper">
+            <div class="app-screen" id="appScreen">
+                <!-- Login Screen -->
+                <div class="screen login-screen active" id="loginScreen">
+                    <div class="login-tabs">
+                        <button class="tab-btn active" data-tab="login" onclick="showLoginTab('login')" data-i18n="login">লগইন</button>
+                        <button class="tab-btn" data-tab="apply" onclick="showLoginTab('apply')" data-i18n="apply">আবেদন</button>
+                    </div>
+                    
+                    <!-- Login Content -->
+                    <div class="login-content" id="loginTabContent">
+                        <div class="login-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h2 data-i18n="appName">স্কুল ম্যানেজমেন্ট</h2>
+                        <p data-i18n="loginSubtitle">আপনার অ্যাকাউন্টে লগইন করুন</p>
+                        <div class="form-group">
+                            <label data-i18n="email">ইমেইল</label>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="emailInput" value="student@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="password">পাসওয়ার্ড</label>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="passwordInput" value="@StudenT@Pass_1234">
+                                <i class="fas fa-eye toggle-password"></i>
+                            </div>
+                        </div>
+                        <p class="forgot-password" data-i18n="forgotPassword">পাসওয়ার্ড ভুলে গেছেন?</p>
+                        <button class="btn-login" onclick="showMainApp()" data-i18n="login">লগইন</button>
+                        <p class="help-text" data-i18n="helpText">সমস্যা হলে স্কুল অফিসে যোগাযোগ করুন</p>
+                    </div>
+                    
+                    <!-- Apply Content -->
+                    <div class="apply-content hidden" id="applyTabContent">
+                        <div class="apply-section">
+                            <h3 class="apply-main-title"><i class="fas fa-edit"></i> নতুন ভর্তি আবেদন করার নিয়ম</h3>
+                            
+                            <div class="apply-card">
+                                <h4 class="step-title">ধাপ ০ - প্রয়োজনীয় সফটওয়্যার</h4>
+                                <ul class="apply-list">
+                                    <li>অ্যাপ ডাউনলোড ও ইন্সটল করুন</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="apply-card">
+                                <h4 class="step-title">ধাপ ১ - ছাত্র/ছাত্রী তথ্য:</h4>
+                                <ul class="apply-list">
+                                    <li>ছাত্র/ছাত্রীর নাম (বাংলায় ও ইংরেজিতে) - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>কোন শ্রেণিতে ভর্তি হতে চান - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>লিঙ্গ নির্বাচন করুন - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>জন্ম তারিখ - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>জন্ম নিবন্ধন নম্বর - <span class="optional">ঐচ্ছিক</span></li>
+                                    <li>রক্তের গ্রুপ - <span class="optional">ঐচ্ছিক</span></li>
+                                    <li>ছবি আপলোড করুন</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="apply-card">
+                                <h4 class="step-title">ধাপ ২ - অভিভাবক তথ্য:</h4>
+                                <ul class="apply-list">
+                                    <li>পিতার নাম (বাংলায় ও ইংরেজিতে) - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>পিতার পেশা - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>মাতার নাম (বাংলায় ও ইংরেজিতে) - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>মাতার পেশা - <span class="required">বাধ্যতামূলক</span></li>
+                                    <li>পিতা বা মাতার যেকোন একটি মোবাইল নম্বর - <span class="required">বাধ্যতামূলক</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="apply-card">
+                                <h4 class="step-title">ধাপ ৩ - ঠিকানা:</h4>
+                                <ul class="apply-list">
+                                    <li>বর্তমান ঠিকানা লিখুন</li>
+                                    <li>স্থায়ী ঠিকানা লিখুন</li>
+                                    <li>"পরবর্তী" বাটনে ক্লিক করে পেমেন্ট পেজে যান</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="apply-card">
+                                <h4 class="step-title">ধাপ ৪ - পেমেন্ট করুন</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="apply-section">
+                            <h3 class="apply-main-title"><i class="fas fa-credit-card"></i> পেমেন্ট করার নিয়ম</h3>
+                            <div class="apply-card">
+                                <ul class="apply-list">
+                                    <li>"পেমেন্ট" বাটনে ক্লিক করুন</li>
+                                    <li>পেমেন্ট পদ্ধতি নির্বাচন করুন:
+                                        <ul class="sub-list">
+                                            <li><strong>বিকাশ:</strong> বিকাশ অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                            <li><strong>নগদ:</strong> নগদ অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                            <li><strong>রকেট:</strong> রকেট অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                            <li><strong>উপায়:</strong> উপায় অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                            <li><strong>কার্ড:</strong> ডেবিট/ক্রেডিট কার্ড দিয়ে পেমেন্ট করুন</li>
+                                        </ul>
+                                    </li>
+                                    <li>পেমেন্ট সফল হলে একটি রসিদ (মানি রিসিট) পাবেন</li>
+                                </ul>
+                                <div class="warning-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span><strong>গুরুত্বপূর্ণ তথ্য:</strong> পেমেন্টের পর প্রাপ্ত মানি রিসিট অবশ্যই বিদ্যালয়ে জমা দিতে হবে</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="অ্যাপ ব্যবহার করার নিয়ম" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>নতুন ভর্তি আবেদন করার নিয়ম</p>
+                    </div>
+                    </div>
+                </div>
+                
+
+                <!-- Main App Screen -->
+                <div class="screen main-app-screen" id="mainAppScreen">
+                    <div class="app-header">
+                        <h1 id="screenTitle">Home</h1>
+                        <div class="header-actions">
+                            <button class="icon-btn"><i class="fas fa-bell"></i></button>
+                            <button class="icon-btn" onclick="showSettings()"><i class="fas fa-cog"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Home Content -->
+                    <div class="screen-content" id="homeContent">
+                        <div class="welcome-card">
+                            <div class="user-avatar" onclick="showImagePopup('../img/profile_img.jpeg')"><img src="../img/profile_img.jpeg" alt="Profile"></div>
+                            <div class="user-info">
+                                <span class="welcome-text" data-i18n="welcome">Welcome!</span>
+                                <h3>Md. Abdullah</h3>
+                                <span class="class-info">Class: 6 | Roll: 12</span>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title" data-i18n="quickActions">Quick Actions</h4>
+                        <div class="quick-actions">
+                            <div class="action-btn" onclick="showScreen('progressScreen')">
+                                <i class="fas fa-chart-line"></i>
+                                <span data-i18n="progress">Progress</span>
+                            </div>
+                            <div class="action-btn" onclick="showScreen('rankingsScreen')">
+                                <i class="fas fa-trophy"></i>
+                                <span data-i18n="rankings">Rankings</span>
+                            </div>
+                            <div class="action-btn" onclick="switchTab('attendance')">
+                                <i class="fas fa-calendar-check"></i>
+                                <span data-i18n="attendance">Attendance</span>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title" data-i18n="quickStats">Quick Stats</h4>
+                        <div class="stats-grid">
+                            <div class="stat-card teal">
+                                <i class="fas fa-user-check"></i>
+                                <h3>85%</h3>
+                                <span data-i18n="attendanceLabel">Attendance</span>
+                            </div>
+                            <div class="stat-card purple">
+                                <i class="fas fa-medal"></i>
+                                <h3>5th</h3>
+                                <span data-i18n="classPosition">Class Position</span>
+                            </div>
+                            <div class="stat-card pink">
+                                <i class="fas fa-wallet"></i>
+                                <h3>৳500</h3>
+                                <span data-i18n="dueFee">Due Fee</span>
+                            </div>
+                            <div class="stat-card blue">
+                                <i class="fas fa-percentage"></i>
+                                <h3>72%</h3>
+                                <span data-i18n="average">Average</span>
+                            </div>
+                        </div>
+
+                        <div class="section-header">
+                            <h4 class="section-title" data-i18n="recentResults">Recent Results</h4>
+                            <span class="view-all" onclick="switchTab('results')" data-i18n="viewAll">View All</span>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-info">
+                                <h4 data-i18n="monthlyTest">Monthly Test - December</h4>
+                                <div class="result-details">
+                                    <div><span data-i18n="obtained">Obtained</span><strong>360/500</strong></div>
+                                    <div><span data-i18n="percentage">Percentage</span><strong>72%</strong></div>
+                                    <div><span data-i18n="position">Position</span><strong>5th</strong></div>
+                                </div>
+                            </div>
+                            <span class="badge passed"><i class="fas fa-check-circle"></i> <span data-i18n="passed">Passed</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Content -->
+                    <div class="screen-content hidden" id="resultsContent">
+                        <div class="filter-tabs">
+                            <button class="filter-btn active" data-i18n="all">সব</button>
+                            <button class="filter-btn" data-i18n="monthly">মাসিক</button>
+                            <button class="filter-btn" data-i18n="term">সাময়িক</button>
+                            <button class="filter-btn" data-i18n="annual">বার্ষিক</button>
+                        </div>
+                        <div class="results-list">
+                            <div class="result-item">
+                                <div class="result-header">
+                                    <h4>মাসিক পরীক্ষা</h4>
+                                    <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
+                                </div>
+                                <span class="result-date">ডিসেম্বর ২০২৫</span>
+                                <div class="progress-bar"><div class="progress" style="width: 72%"></div></div>
+                                <div class="result-stats">
+                                    <div><span>প্রাপ্ত</span><strong>360/500</strong></div>
+                                    <div><span>শতাংশ</span><strong>72%</strong></div>
+                                    <div><span>অবস্থান</span><strong>5ম</strong></div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-header">
+                                    <h4>সাময়িক পরীক্ষা</h4>
+                                    <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
+                                </div>
+                                <span class="result-date">নভেম্বর ২০২৫</span>
+                                <div class="progress-bar"><div class="progress" style="width: 76%"></div></div>
+                                <div class="result-stats">
+                                    <div><span>প্রাপ্ত</span><strong>380/500</strong></div>
+                                    <div><span>শতাংশ</span><strong>76%</strong></div>
+                                    <div><span>অবস্থান</span><strong>3য়</strong></div>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-header">
+                                    <h4>বার্ষিক পরীক্ষা</h4>
+                                    <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
+                                </div>
+                                <span class="result-date">সেপ্টেম্বর ২০২৫</span>
+                                <div class="progress-bar"><div class="progress" style="width: 84%"></div></div>
+                                <div class="result-stats">
+                                    <div><span>প্রাপ্ত</span><strong>420/500</strong></div>
+                                    <div><span>শতাংশ</span><strong>84%</strong></div>
+                                    <div><span>অবস্থান</span><strong>2য়</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payments Content -->
+                    <div class="screen-content hidden" id="paymentsContent">
+                        <div class="payment-due-card">
+                            <div class="due-header">
+                                <span>জানুয়ারি ২০২৬</span>
+                                <span class="due-badge" data-i18n="dueAmount">বকেয়া</span>
+                            </div>
+                            <h2 class="due-amount">৳৫০০</h2>
+                            <p><span data-i18n="lastPayDate">পরিশোধের শেষ তারিখ</span>: ১০ জানুয়ারি ২০২৬</p>
+                            <button class="pay-now-btn"><i class="fas fa-wallet"></i> <span data-i18n="payNow">এখনই পরিশোধ করুন</span></button>
+                        </div>
+
+                        <h4 class="section-title" data-i18n="paymentMethod">পেমেন্ট পদ্ধতি</h4>
+                        <div class="payment-methods">
+                            <div class="method-btn active">
+                                <div class="payment-icon-wrapper bkash">
+                                    <img src="../img/payment_gateway/bkash_icon.png" alt="বিকাশ">
+                                </div>
+                                <span data-i18n="bkash">বিকাশ</span>
+                            </div>
+                            <div class="method-btn">
+                                <div class="payment-icon-wrapper nagad">
+                                    <img src="../img/payment_gateway/nagad_icon.png" alt="নগদ">
+                                </div>
+                                <span data-i18n="nagad">নগদ</span>
+                            </div>
+                            <div class="method-btn">
+                                <div class="payment-icon-wrapper rocket">
+                                    <img src="../img/payment_gateway/rocket_icon.png" alt="রকেট">
+                                </div>
+                                <span data-i18n="rocket">রকেট</span>
+                            </div>
+                            <div class="method-btn">
+                                <div class="payment-icon-wrapper upay">
+                                    <img src="../img/payment_gateway/upay_icon.png" alt="উপায়">
+                                </div>
+                                <span data-i18n="upay">উপায়</span>
+                            </div>
+                            <div class="method-btn">
+                                <div class="payment-icon-wrapper card">
+                                    <img src="../img/payment_gateway/card_icon.png" alt="কার্ড">
+                                </div>
+                                <span data-i18n="card">কার্ড</span>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title" data-i18n="paymentHistory">পেমেন্ট ইতিহাস</h4>
+                        <div class="payment-history">
+                            <div class="payment-item">
+                                <div class="payment-icon paid"><i class="fas fa-check"></i></div>
+                                <div class="payment-info">
+                                    <h4>ডিসেম্বর ২০২৫</h4>
+                                    <span>পরিশোধ: ১৫ ডিসেম্বর</span>
+                                </div>
+                                <div class="payment-amount">
+                                    <strong>৳500</strong>
+                                    <span class="status paid">পরিশোধিত</span>
+                                </div>
+                            </div>
+                            <div class="payment-item">
+                                <div class="payment-icon paid"><i class="fas fa-check"></i></div>
+                                <div class="payment-info">
+                                    <h4>নভেম্বর ২০২৫</h4>
+                                    <span>পরিশোধ: ১০ নভেম্বর</span>
+                                </div>
+                                <div class="payment-amount">
+                                    <strong>৳500</strong>
+                                    <span class="status paid">পরিশোধিত</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Content -->
+                    <div class="screen-content hidden" id="attendanceContent">
+                        <div class="attendance-summary">
+                            <div class="summary-card present">
+                                <i class="fas fa-check-circle"></i>
+                                <h3>১৮</h3>
+                                <span data-i18n="present">উপস্থিত</span>
+                            </div>
+                            <div class="summary-card absent">
+                                <i class="fas fa-times-circle"></i>
+                                <h3>২</h3>
+                                <span data-i18n="absent">অনুপস্থিত</span>
+                            </div>
+                            <div class="summary-card late">
+                                <i class="fas fa-clock"></i>
+                                <h3>১</h3>
+                                <span data-i18n="late">বিলম্বে</span>
+                            </div>
+                        </div>
+
+                        <div class="calendar-card">
+                            <div class="calendar-header">
+                                <button class="cal-nav"><i class="fas fa-chevron-left"></i></button>
+                                <h4>December 2025</h4>
+                                <button class="cal-nav"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="calendar-grid">
+                                <span class="day-name">Sun</span>
+                                <span class="day-name">Mon</span>
+                                <span class="day-name">Tue</span>
+                                <span class="day-name">Wed</span>
+                                <span class="day-name">Thu</span>
+                                <span class="day-name">Fri</span>
+                                <span class="day-name">Sat</span>
+                                <span class="day other">30</span>
+                                <span class="day present">1</span>
+                                <span class="day present">2</span>
+                                <span class="day present">3</span>
+                                <span class="day present">4</span>
+                                <span class="day holiday">5</span>
+                                <span class="day holiday">6</span>
+                                <span class="day present">7</span>
+                                <span class="day present">8</span>
+                                <span class="day absent">9</span>
+                                <span class="day present">10</span>
+                                <span class="day late">11</span>
+                                <span class="day holiday">12</span>
+                                <span class="day holiday">13</span>
+                                <span class="day present">14</span>
+                                <span class="day present">15</span>
+                                <span class="day present">16</span>
+                                <span class="day present">17</span>
+                                <span class="day present">18</span>
+                                <span class="day present">19</span>
+                                <span class="day holiday">20</span>
+                                <span class="day other">21</span>
+                                <span class="day other">22</span>
+                                <span class="day other">23</span>
+                                <span class="day other">24</span>
+                                <span class="day other">25</span>
+                                <span class="day other">26</span>
+                                <span class="day other">27</span>
+                                <span class="day today">29</span>
+                                <span class="day">30</span>
+                                <span class="day">31</span>
+                            </div>
+                            <div class="calendar-legend">
+                                <span><i class="dot present"></i> <span data-i18n="present">উপস্থিত</span></span>
+                                <span><i class="dot absent"></i> <span data-i18n="absent">অনুপস্থিত</span></span>
+                                <span><i class="dot late"></i> <span data-i18n="late">বিলম্বে</span></span>
+                                <span><i class="dot holiday"></i> <span data-i18n="holiday">ছুটি</span></span>
+                            </div>
+                        </div>
+
+                        <h4 class="section-title" data-i18n="recentAttendance">সাম্প্রতিক উপস্থিতি</h4>
+                        <div class="attendance-list">
+                            <div class="attendance-item">
+                                <div class="att-icon present"><i class="fas fa-check"></i></div>
+                                <div class="att-info">
+                                    <h4>১৫ ডিসেম্বর</h4>
+                                    <span>সোমবার</span>
+                                </div>
+                                <span class="att-status present">উপস্থিত</span>
+                            </div>
+                            <div class="attendance-item">
+                                <div class="att-icon present"><i class="fas fa-check"></i></div>
+                                <div class="att-info">
+                                    <h4>১৪ ডিসেম্বর</h4>
+                                    <span>রবিবার</span>
+                                </div>
+                                <span class="att-status present">উপস্থিত</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Content -->
+                    <div class="screen-content hidden" id="profileContent">
+                        <div class="profile-header">
+                            <div class="profile-avatar" onclick="showImagePopup('../img/profile_img.jpeg')">
+                                <img src="../img/profile_img.jpeg" alt="Profile">
+                            </div>
+                            <div class="profile-name-card">
+                                <h2>মোঃ আব্দুল্লাহ</h2>
+                                <span>শ্রেণি: ৬ষ্ঠ | রোল: ১২</span>
+                                <span class="attendance-badge"><i class="fas fa-chart-pie"></i> উপস্থিতি: ৮৫%</span>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h4><i class="fas fa-user"></i> <span data-i18n="studentInfo">ছাত্র তথ্য</span></h4>
+                            <div class="info-row"><span data-i18n="name">নাম</span><strong>মোঃ আব্দুল্লাহ</strong></div>
+                            <div class="info-row"><span data-i18n="className">শ্রেণি</span><strong>৬ষ্ঠ</strong></div>
+                            <div class="info-row"><span data-i18n="section">শাখা</span><strong>ক</strong></div>
+                            <div class="info-row"><span data-i18n="rollNumber">রোল নম্বর</span><strong>১২</strong></div>
+                            <div class="info-row"><span data-i18n="academicYear">শিক্ষাবর্ষ</span><strong>২০২৫-২০২৬</strong></div>
+                            <div class="info-row"><span data-i18n="dob">জন্ম তারিখ</span><strong>১৫ মার্চ ২০১৪</strong></div>
+                        </div>
+
+                        <div class="info-card">
+                            <h4><i class="fas fa-users"></i> <span data-i18n="guardianInfo">অভিভাবক তথ্য</span></h4>
+                            <div class="info-row"><span data-i18n="fatherName">পিতার নাম</span><strong>মোঃ করিম</strong></div>
+                            <div class="info-row"><span data-i18n="motherName">মাতার নাম</span><strong>ফাতেমা বেগম</strong></div>
+                            <div class="info-row"><span data-i18n="mobile">মোবাইল</span><strong>০১৭১২০৪৫৬৭৮</strong></div>
+                            <div class="info-row"><span data-i18n="address">ঠিকানা</span><strong>ঢাকা, বাংলাদেশ</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="screen-content hidden" id="settingsContent">
+                        <div class="settings-back" onclick="goBack()">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        <h4 class="settings-section-title" data-i18n="appearance">Appearance</h4>
+                        <div class="settings-card">
+                            <div class="settings-item">
+                                <div class="settings-icon theme"><i class="fas fa-moon"></i></div>
+                                <div class="settings-info">
+                                    <h4 data-i18n="theme">Theme</h4>
+                                    <span data-i18n="darkMode">Dark Mode</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="settings-item">
+                                <div class="settings-icon lang"><i class="fas fa-language"></i></div>
+                                <div class="settings-info">
+                                    <h4 data-i18n="language">Language</h4>
+                                    <span>English</span>
+                                </div>
+                                <div class="lang-toggle">
+                                    <button class="lang-btn">বাংলা</button>
+                                    <button class="lang-btn active">English</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="settings-section-title" data-i18n="school">School</h4>
+                        <div class="settings-card">
+                            <div class="settings-item clickable">
+                                <div class="settings-icon teachers"><i class="fas fa-chalkboard-teacher"></i></div>
+                                <div class="settings-info">
+                                    <h4 data-i18n="teachersPanel">Teachers Panel</h4>
+                                    <span data-i18n="viewTeachers">View all teachers info</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="settings-item clickable">
+                                <div class="settings-icon routine"><i class="fas fa-calendar-alt"></i></div>
+                                <div class="settings-info">
+                                    <h4 data-i18n="classRoutine">Class Routine</h4>
+                                    <span data-i18n="classSchedule">Class schedule</span>
+                                </div>
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+
+                        <h4 class="settings-section-title" data-i18n="notifications">Notifications</h4>
+                        <div class="settings-card">
+                            <div class="settings-item">
+                                <div class="settings-icon notif"><i class="fas fa-bell"></i></div>
+                                <div class="settings-info">
+                                    <h4 data-i18n="pushNotifications">Push Notifications</h4>
+                                    <span data-i18n="resultPaymentUpdates">Result & payment updates</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="logout-btn" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i> <span data-i18n="logout">লগআউট</span>
+                        </button>
+                    </div>
+
+                    <!-- Bottom Navigation - Fixed Icon Issue -->
+                    <nav class="bottom-nav" id="bottomNav">
+                        <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
+                            <span class="nav-icon"><i class="fas fa-home"></i></span>
+                            <span data-i18n="home">Home</span>
+                        </button>
+                        <button class="nav-item" data-tab="results" onclick="switchTab('results')">
+                            <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
+                            <span data-i18n="results">Results</span>
+                        </button>
+                        <button class="nav-item" data-tab="payments" onclick="switchTab('payments')">
+                            <span class="nav-icon"><i class="fas fa-credit-card"></i></span>
+                            <span data-i18n="payments">Payments</span>
+                        </button>
+                        <button class="nav-item" data-tab="attendance" onclick="switchTab('attendance')">
+                            <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+                            <span data-i18n="attendance">Attendance</span>
+                        </button>
+                        <button class="nav-item" data-tab="profile" onclick="switchTab('profile')">
+                            <span class="nav-icon"><i class="fas fa-user"></i></span>
+                            <span data-i18n="profile">Profile</span>
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Sub Screens -->
+                <div class="screen sub-screen" id="progressScreen">
+                    <div class="sub-header">
+                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                        <h3>Progress</h3>
+                    </div>
+                    <div class="sub-content">
+                        <div class="progress-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" class="bg"></circle>
+                                <circle cx="50" cy="50" r="45" class="progress" style="stroke-dasharray: 204 283"></circle>
+                            </svg>
+                            <div class="progress-text">
+                                <h2>72%</h2>
+                                <span>Overall</span>
+                            </div>
+                        </div>
+                        <h4 class="section-title">Subject Progress</h4>
+                        <div class="subject-progress">
+                            <div class="subject-item">
+                                <span>বাংলা</span>
+                                <div class="progress-bar"><div class="progress" style="width: 78%"></div></div>
+                                <span>78%</span>
+                            </div>
+                            <div class="subject-item">
+                                <span>English</span>
+                                <div class="progress-bar"><div class="progress" style="width: 65%"></div></div>
+                                <span>65%</span>
+                            </div>
+                            <div class="subject-item">
+                                <span>গণিত</span>
+                                <div class="progress-bar"><div class="progress" style="width: 82%"></div></div>
+                                <span>82%</span>
+                            </div>
+                            <div class="subject-item">
+                                <span>বিজ্ঞান</span>
+                                <div class="progress-bar"><div class="progress" style="width: 70%"></div></div>
+                                <span>70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="screen sub-screen" id="rankingsScreen">
+                    <div class="sub-header">
+                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                        <h3>Rankings</h3>
+                    </div>
+                    <div class="sub-content">
+                        <div class="podium">
+                            <div class="podium-item second">
+                                <div class="avatar"><i class="fas fa-user"></i></div>
+                                <span class="name">রহিম</span>
+                                <div class="rank">2</div>
+                                <span class="score">88%</span>
+                            </div>
+                            <div class="podium-item first">
+                                <div class="avatar gold"><i class="fas fa-user"></i></div>
+                                <span class="name">করিম</span>
+                                <div class="rank">1</div>
+                                <span class="score">92%</span>
+                            </div>
+                            <div class="podium-item third">
+                                <div class="avatar"><i class="fas fa-user"></i></div>
+                                <span class="name">জামিল</span>
+                                <div class="rank">3</div>
+                                <span class="score">85%</span>
+                            </div>
+                        </div>
+                        <div class="my-rank-card">
+                            <span>Your Position</span>
+                            <h2>5th</h2>
+                            <span>72% • Top 15%</span>
+                        </div>
+                        <h4 class="section-title">Class Rankings</h4>
+                        <div class="rankings-list">
+                            <div class="rank-item"><span class="pos">4</span><span class="name">সাদিক</span><span class="score">80%</span></div>
+                            <div class="rank-item highlight"><span class="pos">5</span><span class="name">আব্দুল্লাহ (You)</span><span class="score">72%</span></div>
+                            <div class="rank-item"><span class="pos">6</span><span class="name">ফারহান</span><span class="score">70%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Panel (Desktop Only) -->
+        <div class="info-panel">
+            <div class="school-info">
+                <div class="school-logo">
+                    <i class="fas fa-school"></i>
+                </div>
+                <h2>ডেমো উচ্চ বিদ্যালয়</h2>
+                <p>শিক্ষাই আলো, জ্ঞানই শক্তি</p>
+                <a href="../index.html" class="website-link">
+                    <i class="fas fa-globe"></i> ওয়েবসাইট দেখুন
+                </a>
+            </div>
+
+            <!-- ভিডিও টিউটোরিয়াল - YouTube Embed -->
+            <div class="tutorials">
+                <h4>ভিডিও টিউটোরিয়াল</h4>
+                <div class="video-tutorials">
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="অ্যাপ ব্যবহার করার নিয়ম" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>অ্যাপ ব্যবহার করার নিয়ম</p>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" title="রেজাল্ট দেখার নিয়ম" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>রেজাল্ট দেখার নিয়ম</p>
+                    </div>
+                    <div class="video-item">
+                        <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" title="ফি পরিশোধের নিয়ম" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p>ফি পরিশোধের নিয়ম</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- অ্যাপ ব্যবহার গাইড - নতুন সেকশন -->
+            <div class="app-guide">
+                <h4>📱 অ্যাপ ব্যবহার গাইড</h4>
+                
+                <div class="guide-section">
+                    <h5>🔐 লগইন করার নিয়ম</h5>
+                    <ul>
+                        <li>অ্যাপ খুলুন এবং "লগইন" ট্যাবে যান</li>
+                        <li>স্কুল থেকে দেওয়া ইমেইল ও পাসওয়ার্ড দিন</li>
+                        <li>"লগইন" বাটনে ক্লিক করুন</li>
+                        <li>পাসওয়ার্ড ভুলে গেলে "পাসওয়ার্ড ভুলে গেছেন?" এ ক্লিক করুন</li>
+                        <li>সমস্যা হলে স্কুল অফিসে যোগাযোগ করুন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>📝 নতুন ভর্তি আবেদন করার নিয়ম</h5>
+                    <ul>
+                        <li>লগইন স্ক্রিনে "আবেদন" ট্যাবে ক্লিক করুন</li>
+                        <li><strong>ধাপ ১ - ছাত্র/ছাত্রী তথ্য:</strong>
+                            <ul>
+                                <li>ছাত্র/ছাত্রীর নাম (বাংলায় ও ইংরেজিতে) - বাধ্যতামূলক</li>
+                                <li>কোন শ্রেণিতে ভর্তি হতে চান - বাধ্যতামূলক</li>
+                                <li>লিঙ্গ নির্বাচন করুন - বাধ্যতামূলক</li>
+                                <li>জন্ম তারিখ - বাধ্যতামূলক</li>
+                                <li>জন্ম নিবন্ধন নম্বর - ঐচ্ছিক</li>
+                                <li>রক্তের গ্রুপ - ঐচ্ছিক</li>
+                                <li>ছবি আপলোড করুন</li>
+                            </ul>
+                        </li>
+                        <li><strong>ধাপ ২ - অভিভাবক তথ্য:</strong>
+                            <ul>
+                                <li>পিতার নাম (বাংলায় ও ইংরেজিতে) - বাধ্যতামূলক</li>
+                                <li>পিতার পেশা - বাধ্যতামূলক</li>
+                                <li>মাতার নাম (বাংলায় ও ইংরেজিতে) - বাধ্যতামূলক</li>
+                                <li>মাতার পেশা - বাধ্যতামূলক</li>
+                                <li>পিতা বা মাতার যেকোন একটি মোবাইল নম্বর - বাধ্যতামূলক</li>
+                            </ul>
+                        </li>
+                        <li><strong>ধাপ ৩ - ঠিকানা:</strong>
+                            <ul>
+                                <li>বর্তমান ঠিকানা লিখুন</li>
+                                <li>স্থায়ী ঠিকানা লিখুন</li>
+                            </ul>
+                        </li>
+                        <li>"পরবর্তী" বাটনে ক্লিক করে পেমেন্ট পেজে যান</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>💳 পেমেন্ট করার নিয়ম</h5>
+                    <ul>
+                        <li>নিচের নেভিগেশন বার থেকে "Payments" এ ক্লিক করুন</li>
+                        <li>বকেয়া টাকার পরিমাণ দেখুন</li>
+                        <li>"এখনই পরিশোধ করুন" বাটনে ক্লিক করুন</li>
+                        <li>পেমেন্ট পদ্ধতি নির্বাচন করুন:
+                            <ul>
+                                <li><strong>বিকাশ:</strong> বিকাশ অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                <li><strong>নগদ:</strong> নগদ অ্যাপ দিয়ে পেমেন্ট করুন</li>
+                                <li><strong>কার্ড:</strong> ডেবিট/ক্রেডিট কার্ড দিয়ে পেমেন্ট করুন</li>
+                            </ul>
+                        </li>
+                        <li>পেমেন্ট সফল হলে একটি রসিদ (মানি রিসিট) পাবেন</li>
+                        <li><strong>⚠️ গুরুত্বপূর্ণ:</strong> পেমেন্টের পর প্রাপ্ত মানি রিসিট অবশ্যই বিদ্যালয়ে জমা দিতে হবে</li>
+                        <li>পেমেন্ট ইতিহাস দেখতে নিচে স্ক্রল করুন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>📊 রেজাল্ট দেখার নিয়ম</h5>
+                    <ul>
+                        <li>নিচের নেভিগেশন বার থেকে "Results" এ ক্লিক করুন</li>
+                        <li>সব পরীক্ষার ফলাফল দেখতে পাবেন</li>
+                        <li>ফিল্টার করতে পারবেন:
+                            <ul>
+                                <li><strong>সব:</strong> সকল পরীক্ষার ফলাফল</li>
+                                <li><strong>মাসিক:</strong> মাসিক পরীক্ষার ফলাফল</li>
+                                <li><strong>সাময়িক:</strong> সাময়িক পরীক্ষার ফলাফল</li>
+                                <li><strong>বার্ষিক:</strong> বার্ষিক পরীক্ষার ফলাফল</li>
+                            </ul>
+                        </li>
+                        <li>প্রতিটি রেজাল্টে দেখতে পাবেন:
+                            <ul>
+                                <li>প্রাপ্ত নম্বর ও মোট নম্বর</li>
+                                <li>শতাংশ</li>
+                                <li>শ্রেণিতে অবস্থান</li>
+                                <li>উত্তীর্ণ/অনুত্তীর্ণ স্ট্যাটাস</li>
+                            </ul>
+                        </li>
+                        <li>বিস্তারিত দেখতে যেকোন রেজাল্টে ক্লিক করুন</li>
+                        <li>অগ্রগতি দেখতে উপরের চার্ট আইকনে ক্লিক করুন</li>
+                        <li>র‍্যাংকিং দেখতে উপরের র‍্যাংকিং আইকনে ক্লিক করুন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>📅 উপস্থিতি দেখার নিয়ম</h5>
+                    <ul>
+                        <li>নিচের নেভিগেশন বার থেকে "Attendance" এ ক্লিক করুন</li>
+                        <li>উপরে সারাংশ দেখতে পাবেন:
+                            <ul>
+                                <li><strong>উপস্থিত:</strong> মোট উপস্থিতির দিন</li>
+                                <li><strong>অনুপস্থিত:</strong> মোট অনুপস্থিতির দিন</li>
+                                <li><strong>বিলম্বে:</strong> দেরিতে আসার দিন</li>
+                            </ul>
+                        </li>
+                        <li>ক্যালেন্ডারে রঙিন ডট দেখে বুঝতে পারবেন:
+                            <ul>
+                                <li>🟢 সবুজ = উপস্থিত</li>
+                                <li>🔴 লাল = অনুপস্থিত</li>
+                                <li>🟡 হলুদ = বিলম্বে</li>
+                                <li>🔵 নীল = ছুটি</li>
+                            </ul>
+                        </li>
+                        <li>সাম্প্রতিক উপস্থিতির তালিকা নিচে দেখুন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>👤 প্রোফাইল দেখার নিয়ম</h5>
+                    <ul>
+                        <li>নিচের নেভিগেশন বার থেকে "Profile" এ ক্লিক করুন</li>
+                        <li>আপনার ছবি, নাম, শ্রেণি ও রোল দেখতে পাবেন</li>
+                        <li>ছাত্র তথ্য সেকশনে দেখতে পাবেন:
+                            <ul>
+                                <li>নাম, শ্রেণি, শাখা, রোল নম্বর</li>
+                                <li>শিক্ষাবর্ষ, জন্ম তারিখ</li>
+                            </ul>
+                        </li>
+                        <li>অভিভাবক তথ্য সেকশনে দেখতে পাবেন:
+                            <ul>
+                                <li>পিতা-মাতার নাম</li>
+                                <li>মোবাইল নম্বর, ঠিকানা</li>
+                            </ul>
+                        </li>
+                        <li>শিক্ষা ইতিহাস দেখতে পাবেন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>⚙️ সেটিংস</h5>
+                    <ul>
+                        <li>উপরের ডান কোণায় সেটিংস আইকনে ক্লিক করুন</li>
+                        <li><strong>থিম:</strong> ডার্ক/লাইট মোড পরিবর্তন করুন</li>
+                        <li><strong>ভাষা:</strong> বাংলা/English নির্বাচন করুন</li>
+                        <li><strong>শিক্ষক প্যানেল:</strong> সকল শিক্ষকদের তথ্য দেখুন</li>
+                        <li><strong>ক্লাস রুটিন:</strong> ক্লাসের সময়সূচি দেখুন</li>
+                        <li><strong>নোটিফিকেশন:</strong> পুশ নোটিফিকেশন চালু/বন্ধ করুন</li>
+                        <li><strong>লগআউট:</strong> অ্যাকাউন্ট থেকে বের হতে ক্লিক করুন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section">
+                    <h5>👨‍🏫 শিক্ষক তথ্য দেখার নিয়ম</h5>
+                    <ul>
+                        <li>সেটিংস থেকে "শিক্ষক প্যানেল" এ যান</li>
+                        <li>সকল শিক্ষকদের তালিকা দেখতে পাবেন</li>
+                        <li>প্রতিটি শিক্ষকের জন্য দেখতে পাবেন:
+                            <ul>
+                                <li>নাম (বাংলা ও ইংরেজি)</li>
+                                <li>পদবি</li>
+                                <li>বিষয়</li>
+                                <li>মোবাইল নম্বর</li>
+                            </ul>
+                        </li>
+                        <li>মোবাইল নম্বরে ক্লিক করে সরাসরি কল করতে পারবেন</li>
+                    </ul>
+                </div>
+
+                <div class="guide-section important-note">
+                    <h5>⚠️ গুরুত্বপূর্ণ তথ্য</h5>
+                    <ul>
+                        <li>আবেদনের সময় সকল বাধ্যতামূলক (*) ঘর অবশ্যই পূরণ করতে হবে</li>
+                        <li>পেমেন্টের পর প্রাপ্ত রসিদ বিদ্যালয়ে জমা দিতে হবে</li>
+                        <li>পাসওয়ার্ড কারো সাথে শেয়ার করবেন না</li>
+                        <li>সমস্যা হলে স্কুল অফিসে যোগাযোগ করুন</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- অ্যাপ ডাউনলোড -->
+            <div class="download-section">
+                <h4>অ্যাপ ডাউনলোড করুন</h4>
+                <div class="download-btns">
+                    <a href="#" class="download-btn">
+                        <i class="fab fa-google-play"></i>
+                        <span>Google Play</span>
+                    </a>
+                    <a href="#" class="download-btn">
+                        <i class="fab fa-apple"></i>
+                        <span>App Store</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- যোগাযোগ -->
+            <div class="contact-info-panel">
+                <h4>যোগাযোগ</h4>
+                <p><i class="fas fa-phone"></i> +880 2-1234567</p>
+                <p><i class="fas fa-envelope"></i> info@demo.edu.bd</p>
+                <p><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ</p>
+            </div>
+
+            <!-- সোশ্যাল মিডিয়া - একদম শেষে -->
+            <div class="social-links-panel">
+                <h4>সর্বদা আপডেট থাকুন</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Popup Modal -->
+    <div class="image-popup-overlay" id="imagePopup" onclick="hideImagePopup()">
+        <div class="image-popup-content">
+            <img id="popupImage" src="" alt="Profile">
+            <button class="popup-close" onclick="hideImagePopup()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <script src="app_preview_script.js"></script>
+    <script src="data/data_loader.js"></script>
+</body>
+</html>

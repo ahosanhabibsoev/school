@@ -1,0 +1,86 @@
+{
+  "lastUpdated": "2025-12-30",
+  "notices": [
+    {
+      "id": 1,
+      "date": "2025-12-25",
+      "day": "২৫",
+      "month": "ডিসেম্বর",
+      "year": "২০২৫",
+      "titleBn": "বার্ষিক পরীক্ষার ফলাফল প্রকাশ",
+      "titleEn": "Annual Exam Results Published",
+      "contentBn": "২০২৫ শিক্ষাবর্ষের বার্ষিক পরীক্ষার ফলাফল প্রকাশিত হয়েছে। শিক্ষার্থীরা অ্যাপ থেকে দেখতে পারবে।",
+      "contentEn": "Annual exam results for 2025 academic year have been published. Students can view from the app.",
+      "type": "urgent",
+      "typeBn": "জরুরি",
+      "isActive": true,
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "date": "2025-12-20",
+      "day": "২০",
+      "month": "ডিসেম্বর",
+      "year": "২০২৫",
+      "titleBn": "শীতকালীন ছুটির নোটিশ",
+      "titleEn": "Winter Vacation Notice",
+      "contentBn": "২১ ডিসেম্বর থেকে ১১ জানুয়ারি পর্যন্ত শীতকালীন ছুটি থাকবে।",
+      "contentEn": "Winter vacation from December 21 to January 11.",
+      "type": "general",
+      "typeBn": "সাধারণ",
+      "isActive": true,
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "date": "2025-12-15",
+      "day": "১৫",
+      "month": "ডিসেম্বর",
+      "year": "২০২৫",
+      "titleBn": "২০২৬ শিক্ষাবর্ষে ভর্তি চলছে",
+      "titleEn": "Admission Open for 2026",
+      "contentBn": "৬ষ্ঠ থেকে ৯ম শ্রেণিতে ভর্তি চলছে। অ্যাপ থেকে অনলাইনে আবেদন করুন।",
+      "contentEn": "Admission open for Class 6 to 9. Apply online from the app.",
+      "type": "general",
+      "typeBn": "সাধারণ",
+      "isActive": true,
+      "link": "#"
+    },
+    {
+      "id": 4,
+      "date": "2025-12-10",
+      "day": "১০",
+      "month": "ডিসেম্বর",
+      "year": "২০২৫",
+      "titleBn": "বার্ষিক ক্রীড়া প্রতিযোগিতা",
+      "titleEn": "Annual Sports Competition",
+      "contentBn": "আগামী ১৫ জানুয়ারি বার্ষিক ক্রীড়া প্রতিযোগিতা অনুষ্ঠিত হবে।",
+      "contentEn": "Annual sports competition will be held on January 15.",
+      "type": "event",
+      "typeBn": "ইভেন্ট",
+      "isActive": true,
+      "link": "#"
+    },
+    {
+      "id": 5,
+      "date": "2025-12-01",
+      "day": "০১",
+      "month": "ডিসেম্বর",
+      "year": "২০২৫",
+      "titleBn": "মাসিক বেতন পরিশোধের নোটিশ",
+      "titleEn": "Monthly Fee Payment Notice",
+      "contentBn": "ডিসেম্বর মাসের বেতন ১০ তারিখের মধ্যে পরিশোধ করুন।",
+      "contentEn": "Please pay December month fee by 10th.",
+      "type": "general",
+      "typeBn": "সাধারণ",
+      "isActive": true,
+      "link": "#"
+    }
+  ],
+  "noticeTypes": {
+    "urgent": { "colorBn": "জরুরি", "color": "#dc3545", "bgColor": "rgba(220, 53, 69, 0.1)" },
+    "general": { "colorBn": "সাধারণ", "color": "#0d6efd", "bgColor": "rgba(13, 110, 253, 0.1)" },
+    "event": { "colorBn": "ইভেন্ট", "color": "#198754", "bgColor": "rgba(25, 135, 84, 0.1)" },
+    "exam": { "colorBn": "পরীক্ষা", "color": "#fd7e14", "bgColor": "rgba(253, 126, 20, 0.1)" }
+  }
+}

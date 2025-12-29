@@ -1,0 +1,52 @@
+{
+  "academicYear": "2026",
+  "lastUpdated": "2026-01-01",
+  "classes": [
+    {
+      "className": "৬ষ্ঠ শ্রেণি",
+      "classNameEn": "Class 6",
+      "section": "ক",
+      "routine": {
+        "sunday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" }
+        ],
+        "monday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "সমাজ বিজ্ঞান", "subjectEn": "Social Science", "teacherId": "teacher_5" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "ধর্ম শিক্ষা", "subjectEn": "Religion", "teacherId": "teacher_6" }
+        ],
+        "tuesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" }
+        ],
+        "wednesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "সমাজ বিজ্ঞান", "subjectEn": "Social Science", "teacherId": "teacher_5" }
+        ],
+        "thursday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "ধর্ম শিক্ষা", "subjectEn": "Religion", "teacherId": "teacher_6" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" }
+        ]
+      }
+    }
+  ],
+  "periodTiming": {
+    "period1": { "start": "10:00", "end": "10:45" },
+    "period2": { "start": "10:45", "end": "11:30" },
+    "period3": { "start": "11:30", "end": "12:15" },
+    "period4": { "start": "12:15", "end": "01:00" },
+    "tiffinBreak": { "start": "01:00", "end": "01:30" },
+    "period5": { "start": "01:30", "end": "02:15" },
+    "period6": { "start": "02:15", "end": "03:00" }
+  }
+}

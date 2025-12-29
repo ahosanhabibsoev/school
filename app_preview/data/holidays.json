@@ -1,0 +1,188 @@
+{
+  "academicYear": "2026",
+  "lastUpdated": "2026-01-01",
+  "weeklyHolidays": ["friday"],
+  "holidays": [
+    {
+      "date": "2026-01-01",
+      "nameBn": "নববর্ষ",
+      "nameEn": "New Year",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-01-23",
+      "nameBn": "সরস্বতী পূজা",
+      "nameEn": "Saraswati Puja",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-02-04",
+      "nameBn": "শবে বরাত",
+      "nameEn": "Shab-e-Baraat",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-02-21",
+      "nameBn": "শহীদ দিবস ও আন্তর্জাতিক মাতৃভাষা দিবস",
+      "nameEn": "Shahid Day & International Mother Language Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-03-12",
+      "endDate": "2026-03-26",
+      "nameBn": "ঈদুল ফিতরের ছুটি",
+      "nameEn": "Eid-ul-Fitr Holiday",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-03-17",
+      "nameBn": "জাতির পিতা বঙ্গবন্ধু শেখ মুজিবুর রহমানের জন্মদিন",
+      "nameEn": "Birthday of Father of the Nation",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-03-20",
+      "nameBn": "ঈদুল ফিতর",
+      "nameEn": "Eid-ul-Fitr",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-03-26",
+      "nameBn": "স্বাধীনতা দিবস",
+      "nameEn": "Independence Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-04-14",
+      "nameBn": "পহেলা বৈশাখ",
+      "nameEn": "Bengali New Year",
+      "type": "cultural",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-05-01",
+      "nameBn": "মে দিবস",
+      "nameEn": "May Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-05-07",
+      "nameBn": "বুদ্ধ পূর্ণিমা",
+      "nameEn": "Buddha Purnima",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-05-22",
+      "endDate": "2026-05-30",
+      "nameBn": "ঈদুল আযহার ছুটি",
+      "nameEn": "Eid-ul-Adha Holiday",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-05-27",
+      "nameBn": "ঈদুল আযহা",
+      "nameEn": "Eid-ul-Adha",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-06-15",
+      "endDate": "2026-07-15",
+      "nameBn": "গ্রীষ্মকালীন ছুটি",
+      "nameEn": "Summer Vacation",
+      "type": "vacation",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-06-26",
+      "nameBn": "আশুরা",
+      "nameEn": "Ashura",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-08-05",
+      "nameBn": "জুলাই গণঅভ্যুত্থান দিবস",
+      "nameEn": "July Mass Uprising Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-08-15",
+      "nameBn": "জাতীয় শোক দিবস",
+      "nameEn": "National Mourning Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-08-25",
+      "nameBn": "ঈদে মিলাদুন্নবী",
+      "nameEn": "Eid-e-Milad-un-Nabi",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-09-05",
+      "nameBn": "জন্মাষ্টমী",
+      "nameEn": "Janmashtami",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-10-15",
+      "endDate": "2026-10-20",
+      "nameBn": "দুর্গাপূজার ছুটি",
+      "nameEn": "Durga Puja Holidays",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-11-04",
+      "nameBn": "দীপাবলি/কালীপূজা",
+      "nameEn": "Diwali/Kali Puja",
+      "type": "religious",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-11-07",
+      "nameBn": "জাতীয় বিপ্লব ও সংহতি দিবস",
+      "nameEn": "National Revolution Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-12-16",
+      "nameBn": "বিজয় দিবস",
+      "nameEn": "Victory Day",
+      "type": "national",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-12-20",
+      "endDate": "2026-12-31",
+      "nameBn": "শীতকালীন ছুটি",
+      "nameEn": "Winter Vacation",
+      "type": "vacation",
+      "isFullDay": true
+    },
+    {
+      "date": "2026-12-25",
+      "nameBn": "বড়দিন",
+      "nameEn": "Christmas Day",
+      "type": "religious",
+      "isFullDay": true
+    }
+  ]
+}
+
