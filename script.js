@@ -518,8 +518,14 @@ function updateAllHolidaysTable() {
     }).join('');
 }
 
-// Load data on page load
-document.addEventListener('DOMContentLoaded', loadAllSiteData);
+// Load data on page load - Single initialization
+document.addEventListener('DOMContentLoaded', async () => {
+    // Load all JSON data
+    await loadAllSiteData();
+    
+    // Load About Section
+    loadAboutSection();
+});
 
 
 // Gallery Popup Functions
@@ -548,414 +554,39 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-
-// Load Teachers from JSON
-async function loadTeachers() {
-    const teachersGrid = document.getElementById('teachersGrid');
-    if (!teachersGrid) return;
-
-    try {
-        const response = await fetch('app_preview/data/teachers.json');
-        const data = await response.json();
-        
-        teachersGrid.innerHTML = data.teachers
-            .filter(teacher => teacher.isActive)
-            .map(teacher => {
-                const isFemale = teacher.nameBn.includes('খাতুন') || 
-                                 teacher.nameBn.includes('বেগম') || 
-                                 teacher.nameBn.includes('আক্তার');
-                const avatarClass = isFemale ? 'teacher-avatar female' : 'teacher-avatar';
-                const iconClass = isFemale ? 'fas fa-user' : 'fas fa-user-tie';
-                
-                return `
-                    <div class="teacher-card animate-on-scroll">
-                        <div class="${avatarClass}">
-                            ${teacher.imageUrl ? 
-                                `<img src="${teacher.imageUrl}" alt="${teacher.nameBn}">` : 
-                                `<i class="${iconClass}"></i>`
-                            }
-                        </div>
-                        <h3>${teacher.nameBn}</h3>
-                        <p class="designation">${teacher.designationBn}</p>
-                        <p class="subject">${teacher.subjectBn}</p>
-                        <div class="teacher-info">
-                            <a href="tel:+88${teacher.phone}" class="contact-link">
-                                <i class="fas fa-phone"></i> +88${teacher.phone}
-                            </a>
-                            <a href="mailto:${teacher.email}" class="contact-link">
-                                <i class="fas fa-envelope"></i> ${teacher.email}
-                            </a>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        
-        // Re-initialize scroll animations for new elements
-        initScrollAnimations();
-    } catch (error) {
-        console.error('Error loading teachers:', error);
-        teachersGrid.innerHTML = '<p class="error-message">শিক্ষক তথ্য লোড করতে সমস্যা হয়েছে</p>';
-    }
-}
-
-// Call loadTeachers on page load
-document.addEventListener('DOMContentLoaded', loadTeachers);
-
-
-// ========================================
-// Dynamic Data Loading from JSON Files
-// ========================================
-
-let routineData = null;
-let holidaysData = null;
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
-
-// Load Class Routine from JSON
-async function loadClassRoutine() {
-    const routineBody = document.getElementById('routineBody');
-    const routineHead = document.getElementById('routineHead');
-    const routineTabs = document.getElementById('routineTabs');
-    if (!routineBody) return;
-
-    try {
-        const response = await fetch('app_preview/data/class_routine.json');
-        routineData = await response.json();
-        
-        // Create tabs for each class
-        if (routineTabs) {
-            routineTabs.innerHTML = routineData.classes.map((cls, index) => 
-                `<button class="tab-btn ${index === 0 ? 'active' : ''}" data-class-index="${index}">${cls.className}</button>`
-            ).join('');
-            
-            // Add click handlers
-            routineTabs.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    routineTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    renderRoutine(parseInt(btn.dataset.classIndex));
-                });
-            });
-        }
-        
-        // Render header
-        if (routineHead) {
-            const timing = routineData.periodTiming;
-            routineHead.innerHTML = `
-                <tr>
-                    <th>দিন</th>
-                    <th>১ম পিরিয়ড<br><small>${timing.period1.start}-${timing.period1.end}</small></th>
-                    <th>২য় পিরিয়ড<br><small>${timing.period2.start}-${timing.period2.end}</small></th>
-                    <th>৩য় পিরিয়ড<br><small>${timing.period3.start}-${timing.period3.end}</small></th>
-                    <th>বিরতি<br><small>${timing.tiffinBreak.start}-${timing.tiffinBreak.end}</small></th>
-                    <th>৪র্থ পিরিয়ড<br><small>${timing.period5.start}-${timing.period5.end}</small></th>
-                </tr>
-            `;
-        }
-        
-        // Render first class routine
-        renderRoutine(0);
-    } catch (error) {
-        console.error('Error loading class routine:', error);
-        routineBody.innerHTML = '<tr><td colspan="6">রুটিন লোড করতে সমস্যা হয়েছে</td></tr>';
-    }
-}
-
-function renderRoutine(classIndex) {
-    const routineBody = document.getElementById('routineBody');
-    if (!routineData || !routineBody) return;
+// Load About Section from school_info.json
+async function loadAboutSection() {
+    const aboutText = document.getElementById('aboutText');
+    const aboutImage = document.getElementById('aboutImage');
     
-    const classData = routineData.classes[classIndex];
-    if (!classData) return;
+    if (!aboutText) return;
     
-    const dayNames = {
-        sunday: 'রবিবার',
-        monday: 'সোমবার',
-        tuesday: 'মঙ্গলবার',
-        wednesday: 'বুধবার',
-        thursday: 'বৃহস্পতিবার'
-    };
-    
-    let html = '';
-    let isFirst = true;
-    
-    for (const [day, periods] of Object.entries(classData.routine)) {
-        html += `<tr>
-            <td>${dayNames[day]}</td>
-            ${periods.slice(0, 3).map(p => `<td>${p.subjectBn}</td>`).join('')}
-            ${isFirst ? '<td rowspan="5" class="break-cell">টিফিন</td>' : ''}
-            ${periods.slice(3).map(p => `<td>${p.subjectBn}</td>`).join('')}
-        </tr>`;
-        isFirst = false;
-    }
-    
-    routineBody.innerHTML = html;
-}
-
-// Load Holidays/Calendar from JSON
-async function loadHolidays() {
-    try {
-        const response = await fetch('app_preview/data/holidays.json');
-        holidaysData = await response.json();
-        renderCalendar();
-        renderAllHolidays();
-    } catch (error) {
-        console.error('Error loading holidays:', error);
-    }
-}
-
-function renderCalendar() {
-    const calendarGrid = document.getElementById('calendarGrid');
-    const monthYearEl = document.getElementById('currentMonthYear');
-    if (!calendarGrid || !holidaysData) return;
-    
-    const monthNames = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 
-                        'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
-    
-    if (monthYearEl) {
-        monthYearEl.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-    }
-    
-    // Keep day headers
-    let html = `
-        <div class="day-header">রবি</div>
-        <div class="day-header">সোম</div>
-        <div class="day-header">মঙ্গল</div>
-        <div class="day-header">বুধ</div>
-        <div class="day-header">বৃহঃ</div>
-        <div class="day-header holiday-header">শুক্র</div>
-        <div class="day-header">শনি</div>
-    `;
-    
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    const today = new Date();
-    
-    // Empty cells before first day
-    for (let i = 0; i < firstDay; i++) {
-        html += '<div class="day-cell empty"></div>';
-    }
-    
-    // Days of month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const date = new Date(currentYear, currentMonth, day);
-        const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayOfWeek = date.getDay();
-        
-        let classes = ['day-cell'];
-        let holidayName = '';
-        
-        // Check if Friday (weekly holiday)
-        if (dayOfWeek === 5) {
-            classes.push('holiday');
-        }
-        
-        // Check if today
-        if (date.toDateString() === today.toDateString()) {
-            classes.push('today');
-        }
-        
-        // Check for special holidays
-        const holiday = holidaysData.holidays.find(h => {
-            if (h.endDate) {
-                return dateStr >= h.date && dateStr <= h.endDate;
-            }
-            return h.date === dateStr;
-        });
-        
-        if (holiday) {
-            classes.push('special-holiday');
-            holidayName = holiday.nameBn;
-        }
-        
-        html += `<div class="${classes.join(' ')}" ${holidayName ? `title="${holidayName}"` : ''}>${toBengaliNumber(day)}</div>`;
-    }
-    
-    calendarGrid.innerHTML = html;
-    renderMonthlyHolidays();
-}
-
-function renderMonthlyHolidays() {
-    const monthlyList = document.getElementById('monthlyHolidayList');
-    if (!monthlyList || !holidaysData) return;
-    
-    const monthStart = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-01`;
-    const monthEnd = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-31`;
-    
-    const monthHolidays = holidaysData.holidays.filter(h => {
-        return h.date >= monthStart && h.date <= monthEnd;
-    });
-    
-    if (monthHolidays.length === 0) {
-        monthlyList.innerHTML = '<p class="no-holiday">এই মাসে কোনো বিশেষ ছুটি নেই</p>';
-        return;
-    }
-    
-    monthlyList.innerHTML = monthHolidays.map(h => `
-        <div class="holiday-item">
-            <span class="holiday-date">${formatDateBn(h.date)}</span>
-            <span class="holiday-name">${h.nameBn}</span>
-        </div>
-    `).join('');
-}
-
-function renderAllHolidays() {
-    const tbody = document.getElementById('allHolidaysBody');
-    if (!tbody || !holidaysData) return;
-    
-    const typeNames = {
-        national: 'জাতীয়',
-        religious: 'ধর্মীয়',
-        cultural: 'সাংস্কৃতিক',
-        vacation: 'ছুটি'
-    };
-    
-    tbody.innerHTML = holidaysData.holidays.map(h => `
-        <tr>
-            <td>${formatDateBn(h.date)}${h.endDate ? ` - ${formatDateBn(h.endDate)}` : ''}</td>
-            <td>${getDayNameBn(h.date)}</td>
-            <td>${h.nameBn}</td>
-            <td><span class="holiday-type ${h.type}">${typeNames[h.type] || h.type}</span></td>
-        </tr>
-    `).join('');
-}
-
-// Load Notices from JSON
-async function loadNotices() {
-    const noticeGrid = document.getElementById('noticeGrid');
-    if (!noticeGrid) return;
-
-    try {
-        const response = await fetch('app_preview/data/notices.json');
-        const data = await response.json();
-        
-        noticeGrid.innerHTML = data.notices
-            .filter(notice => notice.isActive)
-            .slice(0, 4)
-            .map(notice => `
-                <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''} animate-on-scroll">
-                    <div class="notice-date">
-                        <span class="day">${notice.day}</span>
-                        <span class="month">${notice.month}</span>
-                    </div>
-                    <div class="notice-content">
-                        <span class="notice-badge ${notice.type}">${notice.typeBn}</span>
-                        <h3>${notice.titleBn}</h3>
-                        <p>${notice.contentBn}</p>
-                        <a href="${notice.link}" class="notice-link">বিস্তারিত <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            `).join('');
-        
-        initScrollAnimations();
-    } catch (error) {
-        console.error('Error loading notices:', error);
-        noticeGrid.innerHTML = '<p class="error-message">নোটিশ লোড করতে সমস্যা হয়েছে</p>';
-    }
-}
-
-// Load School Info from JSON
-async function loadSchoolInfo() {
     try {
         const response = await fetch('app_preview/data/school_info.json');
         const data = await response.json();
         
-        // Update school name in header/footer if needed
-        const schoolNameEls = document.querySelectorAll('.school-name');
-        schoolNameEls.forEach(el => el.textContent = data.schoolInfo.nameBn);
+        if (!data.aboutSection) return;
         
-        // Update contact info
-        const phoneEls = document.querySelectorAll('.school-phone');
-        phoneEls.forEach(el => el.textContent = data.schoolInfo.contact.phone);
+        // Build description paragraphs
+        let html = data.aboutSection.description.map(p => `<p>${p}</p>`).join('');
         
-        const emailEls = document.querySelectorAll('.school-email');
-        emailEls.forEach(el => el.textContent = data.schoolInfo.contact.email);
+        // Build features list
+        html += '<div class="features-list">';
+        html += data.aboutSection.features.map(feature => `
+            <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <span>${feature}</span>
+            </div>
+        `).join('');
+        html += '</div>';
         
-        // Load About Section
-        loadAboutSection(data);
+        aboutText.innerHTML = html;
         
+        // Set image
+        if (aboutImage && data.aboutSection.image) {
+            aboutImage.innerHTML = `<img src="${data.aboutSection.image}" alt="স্কুল ভবন">`;
+        }
     } catch (error) {
-        console.error('Error loading school info:', error);
+        console.error('Error loading about section:', error);
     }
 }
-
-// Load About Section from school_info.json
-function loadAboutSection(data) {
-    const aboutText = document.getElementById('aboutText');
-    const aboutImage = document.getElementById('aboutImage');
-    
-    if (!aboutText || !data.aboutSection) return;
-    
-    // Build description paragraphs
-    let html = data.aboutSection.description.map(p => `<p>${p}</p>`).join('');
-    
-    // Build features list
-    html += '<div class="features-list">';
-    html += data.aboutSection.features.map(feature => `
-        <div class="feature">
-            <i class="fas fa-check-circle"></i>
-            <span>${feature}</span>
-        </div>
-    `).join('');
-    html += '</div>';
-    
-    aboutText.innerHTML = html;
-    
-    // Set image
-    if (aboutImage && data.aboutSection.image) {
-        aboutImage.innerHTML = `<img src="${data.aboutSection.image}" alt="স্কুল ভবন">`;
-    }
-}
-
-// Helper Functions
-function toBengaliNumber(num) {
-    const bengaliDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
-    return String(num).split('').map(d => bengaliDigits[parseInt(d)] || d).join('');
-}
-
-function formatDateBn(dateStr) {
-    const date = new Date(dateStr);
-    const day = toBengaliNumber(date.getDate());
-    const monthNames = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 
-                        'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
-    return `${day} ${monthNames[date.getMonth()]}`;
-}
-
-function getDayNameBn(dateStr) {
-    const dayNames = ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'];
-    return dayNames[new Date(dateStr).getDay()];
-}
-
-// Calendar Navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const prevBtn = document.getElementById('prevMonth');
-    const nextBtn = document.getElementById('nextMonth');
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            currentMonth--;
-            if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            renderCalendar();
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            currentMonth++;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            }
-            renderCalendar();
-        });
-    }
-    
-    // Load all data
-    loadClassRoutine();
-    loadHolidays();
-    loadNotices();
-    loadSchoolInfo();
-});
