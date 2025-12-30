@@ -2658,3 +2658,78 @@ html, body {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
 }
+
+
+/* ========================================
+   Info Panel White Text & Android Button
+   ======================================== */
+
+/* Info Panel Headings - White Color */
+.info-panel .school-info h2 {
+    color: #ffffff !important;
+}
+
+.info-panel .tutorials h4,
+.info-panel .download-section h4,
+.info-panel .contact-info-panel h4,
+.info-panel .social-links-panel h4,
+.info-panel .app-guide > h4 {
+    color: #ffffff !important;
+}
+
+/* Android Download Button */
+.android-btn {
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(135deg, #1996df, #3191c9) !important;
+    color: #000000 !important;
+    font-weight: 800;
+}
+
+.android-btn:hover {
+    background: linear-gradient(135deg, #ebeeec, #e1e6e3) !important;
+    transform: translateY(-2px);
+}
+
+.android-icon {
+    width: 27px;
+    height: 27px;
+    object-fit: contain;
+}
+
+
+/* ========================================
+   Attendance Page - White Text
+   ======================================== */
+
+/* Summary Cards - Numbers and Labels */
+.summary-card h3 {
+    color: #ffffff !important;
+}
+
+.summary-card span {
+    color: #ffffff !important;
+}
+
+/* Calendar Header */
+.calendar-card .calendar-header h4 {
+    color: #ffffff !important;
+}
+
+/* Calendar Day Names */
+.calendar-grid .day-name {
+    color: #ffffff !important;
+}
+
+/* Calendar Days */
+.calendar-grid .day {
+    color: #ffffff !important;
+}
+
+.calendar-grid .day.other {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.calendar-grid .day.today {
+    color: #ffffff !important;
+}

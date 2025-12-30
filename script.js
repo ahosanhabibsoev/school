@@ -307,7 +307,7 @@ function updateNoticesSection() {
                 <span class="notice-badge ${notice.type}">${notice.typeBn}</span>
                 <h3>${notice.titleBn}</h3>
                 <p>${notice.contentBn}</p>
-                <a href="${notice.link}" class="notice-link">বিস্তারিত <i class="fas fa-arrow-right"></i></a>
+                <a href="all-notices.html" class="notice-link">বিস্তারিত <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     `).join('');
