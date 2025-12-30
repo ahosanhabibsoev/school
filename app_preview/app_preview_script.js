@@ -2,7 +2,7 @@
 
 let currentTab = 'home';
 let screenHistory = [];
-let currentLang = 'en';
+let currentLang = 'bn';
 
 // Translations
 const translations = {

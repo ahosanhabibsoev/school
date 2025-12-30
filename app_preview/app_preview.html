@@ -137,7 +137,7 @@
                     </div>
                     
                     <div class="app-header">
-                        <h1 id="screenTitle">Home</h1>
+                        <h1 id="screenTitle">হোম</h1>
                         <div class="header-actions">
                             <button class="icon-btn" onclick="toggleNoticesPanel()"><i class="fas fa-bell"></i></button>
                             <button class="icon-btn" onclick="showSettings()"><i class="fas fa-cog"></i></button>
@@ -160,66 +160,66 @@
                         <div class="welcome-card">
                             <div class="user-avatar" onclick="showImagePopup('../img/profile_img.jpeg')"><img src="../img/profile_img.jpeg" alt="Profile"></div>
                             <div class="user-info">
-                                <span class="welcome-text" data-i18n="welcome">Welcome!</span>
-                                <h3>Md. Abdullah</h3>
-                                <span class="class-info">Class: 6 | Roll: 12</span>
+                                <span class="welcome-text" data-i18n="welcome">স্বাগতম!</span>
+                                <h3>মোঃ আব্দুল্লাহ</h3>
+                                <span class="class-info">শ্রেণি: ৬ষ্ঠ | রোল: ১২</span>
                             </div>
                         </div>
 
-                        <h4 class="section-title" data-i18n="quickActions">Quick Actions</h4>
+                        <h4 class="section-title" data-i18n="quickActions">দ্রুত অ্যাকশন</h4>
                         <div class="quick-actions">
                             <div class="action-btn" onclick="showScreen('progressScreen')">
                                 <i class="fas fa-chart-line"></i>
-                                <span data-i18n="progress">Progress</span>
+                                <span data-i18n="progress">অগ্রগতি</span>
                             </div>
                             <div class="action-btn" onclick="showScreen('rankingsScreen')">
                                 <i class="fas fa-trophy"></i>
-                                <span data-i18n="rankings">Rankings</span>
+                                <span data-i18n="rankings">র‍্যাংকিং</span>
                             </div>
                             <div class="action-btn" onclick="switchTab('attendance')">
                                 <i class="fas fa-calendar-check"></i>
-                                <span data-i18n="attendance">Attendance</span>
+                                <span data-i18n="attendance">উপস্থিতি</span>
                             </div>
                         </div>
 
-                        <h4 class="section-title" data-i18n="quickStats">Quick Stats</h4>
+                        <h4 class="section-title" data-i18n="quickStats">পরিসংখ্যান</h4>
                         <div class="stats-grid">
                             <div class="stat-card teal">
                                 <i class="fas fa-user-check"></i>
-                                <h3>85%</h3>
-                                <span data-i18n="attendanceLabel">Attendance</span>
+                                <h3>৮৫%</h3>
+                                <span data-i18n="attendanceLabel">উপস্থিতি</span>
                             </div>
                             <div class="stat-card purple">
                                 <i class="fas fa-medal"></i>
-                                <h3>5th</h3>
-                                <span data-i18n="classPosition">Class Position</span>
+                                <h3>৫ম</h3>
+                                <span data-i18n="classPosition">শ্রেণিতে অবস্থান</span>
                             </div>
-                            <div class="stat-card pink">
+                            <div class="stat-card teal">
                                 <i class="fas fa-wallet"></i>
-                                <h3>৳500</h3>
-                                <span data-i18n="dueFee">Due Fee</span>
+                                <h3>৳৫০০</h3>
+                                <span data-i18n="dueFee">বকেয়া ফি</span>
                             </div>
                             <div class="stat-card blue">
                                 <i class="fas fa-percentage"></i>
-                                <h3>72%</h3>
-                                <span data-i18n="average">Average</span>
+                                <h3>৭২%</h3>
+                                <span data-i18n="average">গড়</span>
                             </div>
                         </div>
-
                         <div class="section-header">
-                            <h4 class="section-title" data-i18n="recentResults">Recent Results</h4>
-                            <span class="view-all" onclick="switchTab('results')" data-i18n="viewAll">View All</span>
+                            <h4 class="section-title" data-i18n="recentResults">সাম্প্রতিক ফলাফল</h4>
+                            <span class="view-all" onclick="switchTab('results')" data-i18n="viewAll">সব দেখুন</span>
                         </div>
-                        <div class="result-card">
-                            <div class="result-info">
-                                <h4 data-i18n="monthlyTest">Monthly Test - December</h4>
-                                <div class="result-details">
-                                    <div><span data-i18n="obtained">Obtained</span><strong>360/500</strong></div>
-                                    <div><span data-i18n="percentage">Percentage</span><strong>72%</strong></div>
-                                    <div><span data-i18n="position">Position</span><strong>5th</strong></div>
-                                </div>
+                        <div class="result-item home-result" onclick="switchTab('results')">
+                            <div class="result-header">
+                                <h4>মাসিক পরীক্ষা - ডিসেম্বর</h4>
+                                <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
                             </div>
-                            <span class="badge passed"><i class="fas fa-check-circle"></i> <span data-i18n="passed">Passed</span></span>
+                            <div class="progress-bar"><div class="progress" style="width: 72%"></div></div>
+                            <div class="result-stats">
+                                <div><span>প্রাপ্ত</span><strong>360/500</strong></div>
+                                <div><span>শতাংশ</span><strong>72%</strong></div>
+                                <div><span>অবস্থান</span><strong>5ম</strong></div>
+                            </div>
                         </div>
                     </div>
 
@@ -370,54 +370,58 @@
                         <div class="calendar-card">
                             <div class="calendar-header">
                                 <button class="cal-nav" onclick="showAppPopup('attendance')"><i class="fas fa-chevron-left"></i></button>
-                                <h4>December 2025</h4>
+                                <h4>ডিসেম্বর ২০২৫</h4>
                                 <button class="cal-nav" onclick="showAppPopup('attendance')"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="calendar-grid">
-                                <span class="day-name">Sun</span>
-                                <span class="day-name">Mon</span>
-                                <span class="day-name">Tue</span>
-                                <span class="day-name">Wed</span>
-                                <span class="day-name">Thu</span>
-                                <span class="day-name">Fri</span>
-                                <span class="day-name">Sat</span>
-                                <span class="day other">30</span>
-                                <span class="day present">1</span>
-                                <span class="day present">2</span>
-                                <span class="day present">3</span>
-                                <span class="day present">4</span>
-                                <span class="day holiday">5</span>
-                                <span class="day holiday">6</span>
-                                <span class="day present">7</span>
-                                <span class="day present">8</span>
-                                <span class="day absent">9</span>
-                                <span class="day present">10</span>
-                                <span class="day late">11</span>
-                                <span class="day holiday">12</span>
-                                <span class="day holiday">13</span>
-                                <span class="day present">14</span>
-                                <span class="day present">15</span>
-                                <span class="day present">16</span>
-                                <span class="day present">17</span>
-                                <span class="day present">18</span>
-                                <span class="day present">19</span>
-                                <span class="day holiday">20</span>
-                                <span class="day other">21</span>
-                                <span class="day other">22</span>
-                                <span class="day other">23</span>
-                                <span class="day other">24</span>
-                                <span class="day other">25</span>
-                                <span class="day other">26</span>
-                                <span class="day other">27</span>
-                                <span class="day today">29</span>
-                                <span class="day">30</span>
-                                <span class="day">31</span>
+                                <span class="day-name">রবি</span>
+                                <span class="day-name">সোম</span>
+                                <span class="day-name">মঙ্গল</span>
+                                <span class="day-name">বুধ</span>
+                                <span class="day-name">বৃহঃ</span>
+                                <span class="day-name">শুক্র</span>
+                                <span class="day-name">শনি</span>
+                                <span class="day other"></span>
+                                <span class="day present">১</span>
+                                <span class="day present">২</span>
+                                <span class="day present">৩</span>
+                                <span class="day present">৪</span>
+                                <span class="day holiday">৫</span>
+                                <span class="day holiday">৬</span>
+                                <span class="day present">৭</span>
+                                <span class="day present">৮</span>
+                                <span class="day absent">৯</span>
+                                <span class="day present">১০</span>
+                                <span class="day late">১১</span>
+                                <span class="day holiday">১২</span>
+                                <span class="day holiday">১৩</span>
+                                <span class="day present">১৪</span>
+                                <span class="day present">১৫</span>
+                                <span class="day present">১৬</span>
+                                <span class="day present">১৭</span>
+                                <span class="day present">১৮</span>
+                                <span class="day holiday">১৯</span>
+                                <span class="day holiday">২০</span>
+                                <span class="day present">২১</span>
+                                <span class="day present">২২</span>
+                                <span class="day present">২৩</span>
+                                <span class="day present">২৪</span>
+                                <span class="day present">২৫</span>
+                                <span class="day holiday">২৬</span>
+                                <span class="day holiday">২৭</span>
+                                <span class="day present">২৮</span>
+                                <span class="day today">২৯</span>
+                                <span class="day">৩০</span>
+                                <span class="day">৩১</span>
+                                <span class="day other"></span>
+                                <span class="day other"></span>
+                                <span class="day other"></span>
                             </div>
                             <div class="calendar-legend">
-                                <span><i class="dot present"></i> <span data-i18n="present">উপস্থিত</span></span>
-                                <span><i class="dot absent"></i> <span data-i18n="absent">অনুপস্থিত</span></span>
-                                <span><i class="dot late"></i> <span data-i18n="late">বিলম্বে</span></span>
-                                <span><i class="dot holiday"></i> <span data-i18n="holiday">ছুটি</span></span>
+                                <span><i class="dot present"></i> উপস্থিত</span>
+                                <span><i class="dot absent"></i> অনুপস্থিত</span>
+                                <span><i class="dot late"></i> বিলম্বে</span>
+                                <span><i class="dot holiday"></i> ছুটি</span>
                             </div>
                         </div>
 
@@ -478,8 +482,9 @@
                     <div class="screen-content hidden" id="settingsContent">
                         <div class="settings-back" onclick="goBack()">
                             <i class="fas fa-arrow-left"></i>
-                            <span class="settings-back-text">Settings</span>
+                            <span class="settings-back-text">সেটিংস</span>
                         </div>
+                        
                         <h4 class="settings-section-title" data-i18n="appearance">Appearance</h4>
                         <div class="settings-card">
                             <div class="settings-item">
@@ -497,11 +502,11 @@
                                 <div class="settings-icon lang"><i class="fas fa-language"></i></div>
                                 <div class="settings-info">
                                     <h4 data-i18n="language">Language</h4>
-                                    <span>English</span>
+                                    <span>বাংলা / English</span>
                                 </div>
                                 <div class="lang-toggle">
-                                    <button class="lang-btn">বাংলা</button>
-                                    <button class="lang-btn active">English</button>
+                                    <button class="lang-btn">বাং</button>
+                                    <button class="lang-btn active">EN</button>
                                 </div>
                             </div>
                         </div>
@@ -512,7 +517,7 @@
                                 <div class="settings-icon teachers"><i class="fas fa-chalkboard-teacher"></i></div>
                                 <div class="settings-info">
                                     <h4 data-i18n="teachersPanel">Teachers Panel</h4>
-                                    <span data-i18n="viewTeachers">View all teachers info</span>
+                                    <span data-i18n="viewTeachers">View all teachers</span>
                                 </div>
                                 <i class="fas fa-chevron-right"></i>
                             </div>
@@ -532,7 +537,7 @@
                                 <div class="settings-icon notif"><i class="fas fa-bell"></i></div>
                                 <div class="settings-info">
                                     <h4 data-i18n="pushNotifications">Push Notifications</h4>
-                                    <span data-i18n="resultPaymentUpdates">Result & payment updates</span>
+                                    <span data-i18n="resultPaymentUpdates">Updates</span>
                                 </div>
                                 <label class="toggle" onclick="showAppPopup('settings')">
                                     <input type="checkbox" checked disabled>
@@ -556,23 +561,23 @@
                     <nav class="bottom-nav" id="bottomNav">
                         <button class="nav-item active" data-tab="home" onclick="switchTab('home')">
                             <span class="nav-icon"><i class="fas fa-home"></i></span>
-                            <span data-i18n="home">Home</span>
+                            <span data-i18n="home">হোম</span>
                         </button>
                         <button class="nav-item" data-tab="results" onclick="switchTab('results')">
                             <span class="nav-icon"><i class="fas fa-file-alt"></i></span>
-                            <span data-i18n="results">Results</span>
+                            <span data-i18n="results">ফলাফল</span>
                         </button>
                         <button class="nav-item" data-tab="payments" onclick="switchTab('payments')">
                             <span class="nav-icon"><i class="fas fa-credit-card"></i></span>
-                            <span data-i18n="payments">Payments</span>
+                            <span data-i18n="payments">পেমেন্ট</span>
                         </button>
                         <button class="nav-item" data-tab="attendance" onclick="switchTab('attendance')">
                             <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
-                            <span data-i18n="attendance">Attendance</span>
+                            <span data-i18n="attendance">উপস্থিতি</span>
                         </button>
                         <button class="nav-item" data-tab="profile" onclick="switchTab('profile')">
                             <span class="nav-icon"><i class="fas fa-user"></i></span>
-                            <span data-i18n="profile">Profile</span>
+                            <span data-i18n="profile">প্রোফাইল</span>
                         </button>
                     </nav>
                 </div>
