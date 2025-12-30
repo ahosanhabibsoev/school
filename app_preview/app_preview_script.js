@@ -173,6 +173,54 @@ function showSettings() {
     document.querySelector('.app-header').style.display = 'none';
 }
 
+// Toggle Notices Panel
+function toggleNoticesPanel() {
+    const panel = document.getElementById('noticesPanel');
+    if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        loadNoticesPanel();
+    } else {
+        panel.classList.add('hidden');
+    }
+}
+
+// Load Notices into Panel
+async function loadNoticesPanel() {
+    const content = document.getElementById('noticesPanelContent');
+    content.innerHTML = '<div class="no-notices"><i class="fas fa-spinner fa-spin"></i><p>লোড হচ্ছে...</p></div>';
+    
+    try {
+        const response = await fetch('data/notices.json');
+        const data = await response.json();
+        
+        if (!data.notices || data.notices.length === 0) {
+            content.innerHTML = '<div class="no-notices"><i class="fas fa-bell-slash"></i><p>কোন নোটিশ নেই</p></div>';
+            return;
+        }
+        
+        const sortedNotices = data.notices
+            .filter(n => n.isActive)
+            .sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        content.innerHTML = sortedNotices.map(notice => `
+            <div class="notice-item ${notice.type === 'urgent' ? 'urgent' : ''}">
+                <div class="notice-item-header">
+                    <div class="notice-item-date">
+                        <span class="day">${notice.day}</span>
+                        <span class="month">${notice.month}</span>
+                    </div>
+                    <span class="notice-item-badge ${notice.type}">${notice.typeBn}</span>
+                </div>
+                <h4>${notice.titleBn}</h4>
+                <p>${notice.contentBn}</p>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading notices:', error);
+        content.innerHTML = '<div class="no-notices"><i class="fas fa-exclamation-triangle"></i><p>নোটিশ লোড করতে সমস্যা হয়েছে</p></div>';
+    }
+}
+
 // Go Back
 function goBack() {
     document.querySelectorAll('.sub-screen').forEach(s => s.classList.remove('active'));

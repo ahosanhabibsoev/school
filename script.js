@@ -693,3 +693,98 @@ function toggleCollapsible(header) {
     const collapsible = header.parentElement;
     collapsible.classList.toggle('active');
 }
+
+// Download Routine as PDF
+function downloadRoutinePDF() {
+    // Get current active class tab
+    const activeTab = document.querySelector('.routine-tabs .tab-btn.active');
+    const className = activeTab ? activeTab.textContent : 'ষষ্ঠ শ্রেণি';
+    
+    // Get routine table data
+    const table = document.querySelector('.routine-table');
+    if (!table) {
+        alert('রুটিন টেবিল পাওয়া যায়নি');
+        return;
+    }
+    
+    // Create a printable version
+    const printWindow = window.open('', '_blank');
+    
+    const printContent = `
+        <!DOCTYPE html>
+        <html lang="bn">
+        <head>
+            <meta charset="UTF-8">
+            <title>ক্লাস রুটিন - ${className} - ডেমো উচ্চ বিদ্যালয়</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body { 
+                    font-family: 'Noto Sans Bengali', sans-serif; 
+                    padding: 30px;
+                    background: white;
+                }
+                .header {
+                    text-align: center;
+                    margin-bottom: 30px;
+                    border-bottom: 2px solid #333;
+                    padding-bottom: 20px;
+                }
+                .header h1 { font-size: 24px; margin-bottom: 5px; }
+                .header h2 { font-size: 18px; color: #666; margin-bottom: 10px; }
+                .header p { font-size: 14px; color: #888; }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+                th, td {
+                    border: 1px solid #333;
+                    padding: 12px 8px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+                th {
+                    background: #2563eb;
+                    color: white;
+                    font-weight: 600;
+                }
+                tr:nth-child(even) { background: #f5f5f5; }
+                .break-cell { 
+                    background: #fef3c7 !important; 
+                    font-weight: 600;
+                    color: #92400e;
+                }
+                .footer {
+                    margin-top: 30px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #888;
+                }
+                @media print {
+                    body { padding: 20px; }
+                    .no-print { display: none; }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>ডেমো উচ্চ বিদ্যালয়</h1>
+                <h2>সাপ্তাহিক ক্লাস রুটিন - ${className}</h2>
+                <p>শিক্ষাবর্ষ: ২০২৬</p>
+            </div>
+            ${table.outerHTML}
+            <div class="footer">
+                <p>© ২০২৫ ডেমো উচ্চ বিদ্যালয় | এই রুটিন পরিবর্তনযোগ্য</p>
+            </div>
+            <script>
+                window.onload = function() {
+                    window.print();
+                }
+            <\/script>
+        </body>
+        </html>
+    `;
+    
+    printWindow.document.write(printContent);
+    printWindow.document.close();
+}
