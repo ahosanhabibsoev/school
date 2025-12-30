@@ -2072,3 +2072,589 @@ html, body {
     margin-bottom: 15px;
     opacity: 0.5;
 }
+
+
+/* ========================================
+   White Text Color Overrides for Mobile View
+   ======================================== */
+
+/* Home Page - White Text */
+.app-header h1#screenTitle {
+    color: #ffffff !important;
+}
+
+.welcome-text {
+    color: #ffffff !important;
+}
+
+.user-info h3 {
+    color: #ffffff !important;
+}
+
+.user-info .class-info {
+    color: #ffffff !important;
+}
+
+.section-title {
+    color: #ffffff !important;
+}
+
+.result-card .result-info h4 {
+    color: #ffffff !important;
+}
+
+.result-card .result-details span {
+    color: #ffffff !important;
+}
+
+.result-card .result-details strong {
+    color: #ffffff !important;
+}
+
+/* Results Page - White Text */
+.result-item h4 {
+    color: #ffffff !important;
+}
+
+.result-item .result-date {
+    color: #ffffff !important;
+}
+
+.result-item .result-stats span {
+    color: #ffffff !important;
+}
+
+.result-item .result-stats strong {
+    color: #ffffff !important;
+}
+
+/* Payments Page - White Text */
+.payment-item .payment-info h4 {
+    color: #ffffff !important;
+}
+
+.payment-item .payment-info span {
+    color: #ffffff !important;
+}
+
+/* Attendance Page - White Text (except উপস্থিত badges) */
+.attendance-item .att-info h4 {
+    color: #ffffff !important;
+}
+
+.attendance-item .att-info span {
+    color: #ffffff !important;
+}
+
+/* Profile Page - All White Text */
+.profile-header h2,
+.profile-name-card h2 {
+    color: #ffffff !important;
+}
+
+.profile-name-card > span {
+    color: #ffffff !important;
+}
+
+.info-card h4 {
+    color: #ffffff !important;
+}
+
+.info-card .info-row span {
+    color: #ffffff !important;
+}
+
+.info-card .info-row strong {
+    color: #ffffff !important;
+}
+
+/* Settings Page - White Text */
+.settings-back {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 50px 0 15px;
+}
+
+.settings-back i {
+    color: #ffffff !important;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.settings-back-text {
+    color: #ffffff !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.settings-item .settings-info h4 {
+    color: #ffffff !important;
+}
+
+/* Rankings Page - White Text */
+.sub-header h3 {
+    color: #ffffff !important;
+}
+
+.podium-item .name {
+    color: #ffffff !important;
+}
+
+.podium-item .score {
+    color: #ffffff !important;
+}
+
+.my-rank-card span {
+    color: #ffffff !important;
+}
+
+.rank-item .pos {
+    color: #ffffff !important;
+}
+
+.rank-item .name {
+    color: #ffffff !important;
+}
+
+.rank-item .score {
+    color: #ffffff !important;
+}
+
+/* Progress Page - White Text */
+.progress-text h2 {
+    color: #ffffff !important;
+}
+
+.progress-text span {
+    color: #ffffff !important;
+}
+
+.subject-item > span {
+    color: #ffffff !important;
+}
+
+
+/* ========================================
+   Demo Notice Banner Styles
+   ======================================== */
+
+/* Main Demo Banner (Top of pages) */
+.demo-notice-banner {
+    background: rgba(255, 59, 48, 0.15);
+    border-bottom: 1px solid rgba(255, 59, 48, 0.3);
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    z-index: 10;
+}
+
+.demo-notice-banner i {
+    color: #ff3b30;
+    font-size: 0.9rem;
+}
+
+.demo-notice-banner span {
+    color: #ff3b30;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Demo Notice for Settings Page (Below Logout) */
+.demo-notice-settings {
+    background: rgba(255, 59, 48, 0.15);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.demo-notice-settings i {
+    color: #ff3b30;
+    font-size: 1rem;
+}
+
+.demo-notice-settings span {
+    color: #ff3b30;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Adjust app-header padding when demo banner is present */
+.main-app-screen .app-header {
+    padding-top: 10px;
+}
+
+
+/* ========================================
+   App Download Popup Modal Styles
+   ======================================== */
+
+.app-download-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.app-download-popup-overlay.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.app-download-popup-content {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 24px;
+    padding: 40px 30px;
+    max-width: 350px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.popup-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #94a3b8;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.popup-close-btn:hover {
+    background: rgba(255, 59, 48, 0.2);
+    color: #ff3b30;
+}
+
+.popup-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+}
+
+.popup-icon i {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.app-download-popup-content h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.app-download-popup-content p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.app-download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: #000000;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
+}
+
+.app-download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(74, 222, 128, 0.4);
+}
+
+.app-download-btn i {
+    font-size: 1.3rem;
+}
+
+/* Result item clickable style */
+.result-item {
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.result-item:hover {
+    transform: translateX(5px);
+    border-left: 3px solid var(--accent);
+}
+
+
+/* ========================================
+   Teachers Panel & Class Routine Styles
+   ======================================== */
+
+.section-subtitle-app {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+}
+
+.loading-spinner i {
+    margin-right: 8px;
+}
+
+/* Teachers Grid */
+.teachers-grid-app {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.teacher-card-app {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.teacher-card-app:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.teacher-avatar-app {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    background: var(--bg-card-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.teacher-avatar-app:hover {
+    transform: scale(1.05);
+}
+
+.teacher-avatar-app img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teacher-avatar-app i {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+}
+
+.teacher-avatar-app.female {
+    background: linear-gradient(135deg, #f8bbd9, #f48fb1);
+}
+
+.teacher-avatar-app.female i {
+    color: #880e4f;
+}
+
+.teacher-card-app h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.teacher-card-app .designation {
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.teacher-card-app .subject {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.teacher-contact-app {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.teacher-contact-app a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: var(--bg-card-light);
+    border-radius: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.teacher-contact-app a:hover {
+    background: var(--primary);
+}
+
+.teacher-contact-app a i {
+    color: var(--accent);
+}
+
+/* Class Routine */
+.routine-tabs-app {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.routine-tabs-app::-webkit-scrollbar {
+    display: none;
+}
+
+.routine-tab-btn {
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: none;
+    border-radius: 25px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+}
+
+.routine-tab-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.routine-table-wrapper-app {
+    overflow-x: auto;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: var(--bg-card);
+}
+
+.routine-table-app {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+.routine-table-app th,
+.routine-table-app td {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+}
+
+.routine-table-app th {
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.routine-table-app th small {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.routine-table-app td {
+    color: #ffffff;
+    background: var(--bg-card);
+}
+
+.routine-table-app .break-cell {
+    background: #ff9800 !important;
+    color: #000000;
+    font-weight: 600;
+}
+
+.btn-download-routine {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    border: none;
+    border-radius: 12px;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-download-routine:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
+}

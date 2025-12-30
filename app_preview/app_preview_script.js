@@ -162,6 +162,215 @@ function showScreen(screenId) {
     document.querySelectorAll('.screen-content').forEach(c => c.classList.add('hidden'));
     document.getElementById(screenId).classList.add('active');
     document.getElementById('bottomNav').style.display = 'none';
+    document.querySelector('.app-header').style.display = 'none';
+    
+    // Load data for specific screens
+    if (screenId === 'teachersPanelScreen') {
+        loadTeachersPanel();
+    } else if (screenId === 'classRoutineScreen') {
+        loadClassRoutine();
+    }
+}
+
+// Load Teachers Panel
+async function loadTeachersPanel() {
+    const grid = document.getElementById('teachersGridApp');
+    grid.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</div>';
+    
+    try {
+        const response = await fetch('data/teachers.json');
+        const data = await response.json();
+        
+        if (!data.teachers || data.teachers.length === 0) {
+            grid.innerHTML = '<p class="no-data">কোন শিক্ষক তথ্য পাওয়া যায়নি</p>';
+            return;
+        }
+        
+        grid.innerHTML = data.teachers.map(teacher => `
+            <div class="teacher-card-app">
+                <div class="teacher-avatar-app ${teacher.nameBn.includes('খাতুন') || teacher.nameBn.includes('বেগম') || teacher.nameBn.includes('আক্তার') ? 'female' : ''}" 
+                     ${teacher.imageUrl ? `onclick="showImagePopup('${teacher.imageUrl}')"` : ''}>
+                    ${teacher.imageUrl ? `<img src="${teacher.imageUrl}" alt="${teacher.nameBn}">` : '<i class="fas fa-user-tie"></i>'}
+                </div>
+                <h4>${teacher.nameBn}</h4>
+                <p class="designation">${teacher.designationBn}</p>
+                <p class="subject">${teacher.subjectBn}</p>
+                <div class="teacher-contact-app">
+                    <a href="tel:${teacher.phone}"><i class="fas fa-phone"></i> ${teacher.phone}</a>
+                    <a href="mailto:${teacher.email}"><i class="fas fa-envelope"></i> ${teacher.email}</a>
+                </div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading teachers:', error);
+        grid.innerHTML = '<p class="no-data">শিক্ষক তথ্য লোড করতে সমস্যা হয়েছে</p>';
+    }
+}
+
+// Class Routine Data
+let classRoutineData = null;
+let currentClassIndex = 0;
+
+// Load Class Routine
+async function loadClassRoutine() {
+    const tabs = document.getElementById('routineTabsApp');
+    const tbody = document.getElementById('routineBodyApp');
+    const thead = document.getElementById('routineHeadApp');
+    
+    tbody.innerHTML = '<tr><td colspan="6" class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</td></tr>';
+    
+    try {
+        const response = await fetch('data/class_routine.json');
+        classRoutineData = await response.json();
+        
+        if (!classRoutineData.classes || classRoutineData.classes.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6">কোন রুটিন পাওয়া যায়নি</td></tr>';
+            return;
+        }
+        
+        // Create tabs
+        tabs.innerHTML = classRoutineData.classes.map((cls, index) => 
+            `<button class="routine-tab-btn ${index === 0 ? 'active' : ''}" onclick="switchRoutineTab(${index})">${cls.className}</button>`
+        ).join('');
+        
+        // Create header
+        const timing = classRoutineData.periodTiming;
+        thead.innerHTML = `
+            <tr>
+                <th>দিন</th>
+                <th>১ম পিরিয়ড<br><small>${timing.period1.start}-${timing.period1.end}</small></th>
+                <th>২য় পিরিয়ড<br><small>${timing.period2.start}-${timing.period2.end}</small></th>
+                <th>৩য় পিরিয়ড<br><small>${timing.period3.start}-${timing.period3.end}</small></th>
+                <th>বিরতি<br><small>${timing.tiffinBreak.start}-${timing.tiffinBreak.end}</small></th>
+                <th>৪র্থ পিরিয়ড<br><small>${timing.period5.start}-${timing.period5.end}</small></th>
+            </tr>
+        `;
+        
+        // Render first class
+        renderRoutineTableApp(0);
+    } catch (error) {
+        console.error('Error loading routine:', error);
+        tbody.innerHTML = '<tr><td colspan="6">রুটিন লোড করতে সমস্যা হয়েছে</td></tr>';
+    }
+}
+
+function switchRoutineTab(index) {
+    currentClassIndex = index;
+    document.querySelectorAll('.routine-tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+    });
+    renderRoutineTableApp(index);
+}
+
+function renderRoutineTableApp(classIndex) {
+    const tbody = document.getElementById('routineBodyApp');
+    if (!classRoutineData) return;
+    
+    const classData = classRoutineData.classes[classIndex];
+    if (!classData) return;
+    
+    const dayNames = {
+        sunday: 'রবিবার',
+        monday: 'সোমবার',
+        tuesday: 'মঙ্গলবার',
+        wednesday: 'বুধবার',
+        thursday: 'বৃহস্পতিবার'
+    };
+    
+    let html = '';
+    let isFirst = true;
+    
+    for (const [day, periods] of Object.entries(classData.routine)) {
+        html += `<tr>
+            <td>${dayNames[day]}</td>
+            ${periods.slice(0, 3).map(p => `<td>${p.subjectBn}</td>`).join('')}
+            ${isFirst ? '<td rowspan="5" class="break-cell">টিফিন</td>' : ''}
+            ${periods.slice(3).map(p => `<td>${p.subjectBn}</td>`).join('')}
+        </tr>`;
+        isFirst = false;
+    }
+    
+    tbody.innerHTML = html;
+}
+
+// Download Routine PDF
+function downloadRoutinePDFApp() {
+    if (!classRoutineData) return;
+    
+    const className = classRoutineData.classes[currentClassIndex]?.className || 'ক্লাস রুটিন';
+    const table = document.getElementById('routineTableApp');
+    
+    const printWindow = window.open('', '_blank');
+    
+    const printContent = `
+        <!DOCTYPE html>
+        <html lang="bn">
+        <head>
+            <meta charset="UTF-8">
+            <title>ক্লাস রুটিন - ${className} - ডেমো উচ্চ বিদ্যালয়</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body { 
+                    font-family: 'Noto Sans Bengali', sans-serif; 
+                    padding: 30px;
+                    background: white;
+                }
+                .header {
+                    text-align: center;
+                    margin-bottom: 30px;
+                    border-bottom: 2px solid #333;
+                    padding-bottom: 20px;
+                }
+                .header h1 { font-size: 24px; margin-bottom: 5px; }
+                .header h2 { font-size: 18px; color: #666; margin-bottom: 10px; }
+                .header p { font-size: 14px; color: #888; }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+                th, td {
+                    border: 1px solid #333;
+                    padding: 12px 8px;
+                    text-align: center;
+                    font-size: 14px;
+                }
+                th {
+                    background: #2563eb;
+                    color: white;
+                    font-weight: 600;
+                }
+                tr:nth-child(even) { background: #f5f5f5; }
+                .break-cell { 
+                    background: #fef3c7 !important; 
+                    font-weight: 600;
+                    color: #92400e;
+                }
+                .footer {
+                    margin-top: 30px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #888;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>ডেমো উচ্চ বিদ্যালয়</h1>
+                <h2>সাপ্তাহিক ক্লাস রুটিন - ${className}</h2>
+                <p>শিক্ষাবর্ষ: ২০২৬</p>
+            </div>
+            ${table.outerHTML}
+            <div class="footer">
+                <p>© ২০২৫ ডেমো উচ্চ বিদ্যালয় | এই রুটিন পরিবর্তনযোগ্য</p>
+            </div>
+            <script>window.onload = function() { window.print(); }<\/script>
+        </body>
+        </html>
+    `;
+    
+    printWindow.document.write(printContent);
+    printWindow.document.close();
 }
 
 // Show Settings
@@ -295,6 +504,44 @@ function showImagePopup(imageSrc) {
 
 function hideImagePopup() {
     const popup = document.getElementById('imagePopup');
+    popup.classList.remove('active');
+}
+
+// App Download Popup Functions
+const popupMessages = {
+    payment: {
+        title: 'পেমেন্ট করুন',
+        message: 'ছাত্র/ছাত্রীদের বকেয়া পরিশোধ করতে অ্যাপ ব্যবহার করুন।'
+    },
+    result: {
+        title: 'রিয়াল তথ্য দেখুন',
+        message: 'এখানকার সকল তথ্যই মক বা ডেমো। রিয়াল তথ্য দেখতে অ্যাপ এ লগইন করুন।'
+    },
+    settings: {
+        title: 'সকল সুবিধা পান',
+        message: 'সকল সুবিধা উপভোগ করতে অ্যাপ ব্যবহার করুন।'
+    },
+    attendance: {
+        title: 'উপস্থিতি দেখুন',
+        message: 'ছাত্র/ছাত্রীদের উপস্থিতি দেখতে অ্যাপ ব্যবহার করুন।'
+    }
+};
+
+function showAppPopup(type) {
+    const popup = document.getElementById('appDownloadPopup');
+    const title = document.getElementById('popupTitle');
+    const message = document.getElementById('popupMessage');
+    
+    const content = popupMessages[type] || popupMessages.settings;
+    title.textContent = content.title;
+    message.textContent = content.message;
+    
+    popup.classList.add('active');
+}
+
+function hideAppDownloadPopup(event) {
+    if (event && event.target !== event.currentTarget) return;
+    const popup = document.getElementById('appDownloadPopup');
     popup.classList.remove('active');
 }
 

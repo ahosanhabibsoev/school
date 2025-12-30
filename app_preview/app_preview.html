@@ -130,6 +130,12 @@
 
                 <!-- Main App Screen -->
                 <div class="screen main-app-screen" id="mainAppScreen">
+                    <!-- Demo Notice Banner -->
+                    <div class="demo-notice-banner" id="demoBanner">
+                        <i class="fas fa-info-circle"></i>
+                        <span>এটা অ্যাপ এর ডেমো মাত্র। সকল সুবিধা পেতে অ্যাপ ইন্সটল করুন।</span>
+                    </div>
+                    
                     <div class="app-header">
                         <h1 id="screenTitle">Home</h1>
                         <div class="header-actions">
@@ -226,7 +232,7 @@
                             <button class="filter-btn" data-i18n="annual">বার্ষিক</button>
                         </div>
                         <div class="results-list">
-                            <div class="result-item">
+                            <div class="result-item" onclick="showAppPopup('result')">
                                 <div class="result-header">
                                     <h4>মাসিক পরীক্ষা</h4>
                                     <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
@@ -239,7 +245,7 @@
                                     <div><span>অবস্থান</span><strong>5ম</strong></div>
                                 </div>
                             </div>
-                            <div class="result-item">
+                            <div class="result-item" onclick="showAppPopup('result')">
                                 <div class="result-header">
                                     <h4>সাময়িক পরীক্ষা</h4>
                                     <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
@@ -252,7 +258,7 @@
                                     <div><span>অবস্থান</span><strong>3য়</strong></div>
                                 </div>
                             </div>
-                            <div class="result-item">
+                            <div class="result-item" onclick="showAppPopup('result')">
                                 <div class="result-header">
                                     <h4>বার্ষিক পরীক্ষা</h4>
                                     <span class="badge passed"><i class="fas fa-check-circle"></i> উত্তীর্ণ</span>
@@ -277,7 +283,7 @@
                             </div>
                             <h2 class="due-amount">৳৫০০</h2>
                             <p><span data-i18n="lastPayDate">পরিশোধের শেষ তারিখ</span>: ১০ জানুয়ারি ২০২৬</p>
-                            <button class="pay-now-btn"><i class="fas fa-wallet"></i> <span data-i18n="payNow">এখনই পরিশোধ করুন</span></button>
+                            <button class="pay-now-btn" onclick="showAppPopup('payment')"><i class="fas fa-wallet"></i> <span data-i18n="payNow">এখনই পরিশোধ করুন</span></button>
                         </div>
 
                         <h4 class="section-title" data-i18n="paymentMethod">পেমেন্ট পদ্ধতি</h4>
@@ -363,9 +369,9 @@
 
                         <div class="calendar-card">
                             <div class="calendar-header">
-                                <button class="cal-nav"><i class="fas fa-chevron-left"></i></button>
+                                <button class="cal-nav" onclick="showAppPopup('attendance')"><i class="fas fa-chevron-left"></i></button>
                                 <h4>December 2025</h4>
-                                <button class="cal-nav"><i class="fas fa-chevron-right"></i></button>
+                                <button class="cal-nav" onclick="showAppPopup('attendance')"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="calendar-grid">
                                 <span class="day-name">Sun</span>
@@ -472,6 +478,7 @@
                     <div class="screen-content hidden" id="settingsContent">
                         <div class="settings-back" onclick="goBack()">
                             <i class="fas fa-arrow-left"></i>
+                            <span class="settings-back-text">Settings</span>
                         </div>
                         <h4 class="settings-section-title" data-i18n="appearance">Appearance</h4>
                         <div class="settings-card">
@@ -481,8 +488,8 @@
                                     <h4 data-i18n="theme">Theme</h4>
                                     <span data-i18n="darkMode">Dark Mode</span>
                                 </div>
-                                <label class="toggle">
-                                    <input type="checkbox" checked>
+                                <label class="toggle" onclick="showAppPopup('settings')">
+                                    <input type="checkbox" checked disabled>
                                     <span class="slider"></span>
                                 </label>
                             </div>
@@ -501,7 +508,7 @@
 
                         <h4 class="settings-section-title" data-i18n="school">School</h4>
                         <div class="settings-card">
-                            <div class="settings-item clickable">
+                            <div class="settings-item clickable" onclick="showScreen('teachersPanelScreen')">
                                 <div class="settings-icon teachers"><i class="fas fa-chalkboard-teacher"></i></div>
                                 <div class="settings-info">
                                     <h4 data-i18n="teachersPanel">Teachers Panel</h4>
@@ -509,7 +516,7 @@
                                 </div>
                                 <i class="fas fa-chevron-right"></i>
                             </div>
-                            <div class="settings-item clickable">
+                            <div class="settings-item clickable" onclick="showScreen('classRoutineScreen')">
                                 <div class="settings-icon routine"><i class="fas fa-calendar-alt"></i></div>
                                 <div class="settings-info">
                                     <h4 data-i18n="classRoutine">Class Routine</h4>
@@ -527,8 +534,8 @@
                                     <h4 data-i18n="pushNotifications">Push Notifications</h4>
                                     <span data-i18n="resultPaymentUpdates">Result & payment updates</span>
                                 </div>
-                                <label class="toggle">
-                                    <input type="checkbox" checked>
+                                <label class="toggle" onclick="showAppPopup('settings')">
+                                    <input type="checkbox" checked disabled>
                                     <span class="slider"></span>
                                 </label>
                             </div>
@@ -537,6 +544,12 @@
                         <button class="logout-btn" onclick="logout()">
                             <i class="fas fa-sign-out-alt"></i> <span data-i18n="logout">লগআউট</span>
                         </button>
+                        
+                        <!-- Demo Notice for Settings Page -->
+                        <div class="demo-notice-settings">
+                            <i class="fas fa-info-circle"></i>
+                            <span>এটা অ্যাপ এর ডেমো মাত্র। সকল সুবিধা পেতে অ্যাপ ইন্সটল করুন।</span>
+                        </div>
                     </div>
 
                     <!-- Bottom Navigation - Fixed Icon Issue -->
@@ -644,6 +657,46 @@
                             <div class="rank-item highlight"><span class="pos">5</span><span class="name">আব্দুল্লাহ (You)</span><span class="score">72%</span></div>
                             <div class="rank-item"><span class="pos">6</span><span class="name">ফারহান</span><span class="score">70%</span></div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Teachers Panel Screen -->
+                <div class="screen sub-screen" id="teachersPanelScreen">
+                    <div class="sub-header">
+                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                        <h3>শিক্ষকবৃন্দ</h3>
+                    </div>
+                    <div class="sub-content">
+                        <p class="section-subtitle-app">অভিজ্ঞ ও নিবেদিতপ্রাণ শিক্ষকমণ্ডলী</p>
+                        <div class="teachers-grid-app" id="teachersGridApp">
+                            <!-- Teachers will be loaded from JSON -->
+                            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Class Routine Screen -->
+                <div class="screen sub-screen" id="classRoutineScreen">
+                    <div class="sub-header">
+                        <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-left"></i></button>
+                        <h3>ক্লাস রুটিন</h3>
+                    </div>
+                    <div class="sub-content">
+                        <p class="section-subtitle-app">শ্রেণি অনুযায়ী সাপ্তাহিক ক্লাস রুটিন</p>
+                        <div class="routine-tabs-app" id="routineTabsApp">
+                            <!-- Tabs will be loaded from JSON -->
+                        </div>
+                        <div class="routine-table-wrapper-app">
+                            <table class="routine-table-app" id="routineTableApp">
+                                <thead id="routineHeadApp"></thead>
+                                <tbody id="routineBodyApp">
+                                    <tr><td colspan="6" class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> লোড হচ্ছে...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn-download-routine" onclick="downloadRoutinePDFApp()">
+                            <i class="fas fa-download"></i> রুটিন ডাউনলোড করুন
+                        </button>
                     </div>
                 </div>
             </div>
@@ -918,6 +971,22 @@
         <div class="image-popup-content">
             <img id="popupImage" src="" alt="Profile">
             <button class="popup-close" onclick="hideImagePopup()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- App Download Popup Modal -->
+    <div class="app-download-popup-overlay" id="appDownloadPopup" onclick="hideAppDownloadPopup(event)">
+        <div class="app-download-popup-content" onclick="event.stopPropagation()">
+            <button class="popup-close-btn" onclick="hideAppDownloadPopup()"><i class="fas fa-times"></i></button>
+            <div class="popup-icon">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 id="popupTitle">অ্যাপ ডাউনলোড করুন</h3>
+            <p id="popupMessage">সকল সুবিধা পেতে অ্যাপ ইন্সটল করুন</p>
+            <a href="#" class="app-download-btn" id="popupDownloadBtn">
+                <i class="fab fa-android"></i>
+                <span>অ্যাপ ডাউনলোড করুন</span>
+            </a>
         </div>
     </div>
 
