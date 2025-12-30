@@ -75,6 +75,117 @@
           { "period": 4, "time": "12:15 - 01:00", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" }
         ]
       }
+    },
+    {
+      "className": "৮ম শ্রেণি",
+      "classNameEn": "Class 8",
+      "section": "ক",
+      "routine": {
+        "sunday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" }
+        ],
+        "monday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" }
+        ],
+        "tuesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "আইসিটি", "subjectEn": "ICT", "teacherId": "teacher_7" }
+        ],
+        "wednesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "আইসিটি", "subjectEn": "ICT", "teacherId": "teacher_7" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "গণিত", "subjectEn": "Mathematics", "teacherId": "teacher_3" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "সমাজ বিজ্ঞান", "subjectEn": "Social Science", "teacherId": "teacher_5" }
+        ],
+        "thursday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "বিজ্ঞান", "subjectEn": "Science", "teacherId": "teacher_4" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "ধর্ম শিক্ষা", "subjectEn": "Religion", "teacherId": "teacher_6" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" }
+        ]
+      }
+    },
+    {
+      "className": "৯ম শ্রেণি",
+      "classNameEn": "Class 9",
+      "section": "ক",
+      "routine": {
+        "sunday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" }
+        ],
+        "monday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" }
+        ],
+        "tuesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" }
+        ],
+        "wednesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "আইসিটি", "subjectEn": "ICT", "teacherId": "teacher_7" }
+        ],
+        "thursday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" }
+        ]
+      }
+    },
+    {
+      "className": "১০ম শ্রেণি",
+      "classNameEn": "Class 10",
+      "section": "ক",
+      "routine": {
+        "sunday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" }
+        ],
+        "monday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" }
+        ],
+        "tuesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "উচ্চতর গণিত", "subjectEn": "Higher Math", "teacherId": "teacher_3" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" }
+        ],
+        "wednesday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "রসায়ন", "subjectEn": "Chemistry", "teacherId": "teacher_9" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "পদার্থবিজ্ঞান", "subjectEn": "Physics", "teacherId": "teacher_8" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" }
+        ],
+        "thursday": [
+          { "period": 1, "time": "10:00 - 10:45", "subjectBn": "জীববিজ্ঞান", "subjectEn": "Biology", "teacherId": "teacher_10" },
+          { "period": 2, "time": "10:45 - 11:30", "subjectBn": "বাংলা", "subjectEn": "Bengali", "teacherId": "teacher_1" },
+          { "period": 3, "time": "11:30 - 12:15", "subjectBn": "ইংরেজি", "subjectEn": "English", "teacherId": "teacher_2" },
+          { "period": 4, "time": "12:15 - 01:00", "subjectBn": "আইসিটি", "subjectEn": "ICT", "teacherId": "teacher_7" }
+        ]
+      }
     }
   ],
   "periodTiming": {
