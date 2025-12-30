@@ -1041,8 +1041,8 @@ body {
 @media (max-width: 768px) {
     .phone-frame {
         width: 300px;
-        height: 680px;
-        border-radius: 35px;
+        height: 570px;
+        border-radius: 40px;
     }
     
     .phone-screen {
@@ -1060,33 +1060,23 @@ body {
 
 @media (max-width: 480px) {
     .phone-frame {
-        width: calc(100vw - 40px);
-        max-width: 100%;
-        height: 75vh;
-        min-height: 550px;
-        border-radius: 30px;
-        padding: 5px;
+        width: 260px;
+        height: 530px;
+        border-radius: 35px;
+        padding: 10px;
     }
     
     .phone-screen {
-        border-radius: 26px;
+        border-radius: 28px;
     }
     
     .phone-screen iframe {
-        border-radius: 26px;
+        border-radius: 28px;
     }
     
     .phone-wrapper-realistic .fullscreen-btn {
         right: 10px;
-        top: -50px;
-    }
-    
-    .download-content {
-        padding: 0 10px;
-    }
-    
-    .download-text h2 {
-        font-size: 1.6rem;
+        top: -45px;
     }
 }
 
