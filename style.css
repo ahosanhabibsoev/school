@@ -1040,7 +1040,7 @@ body {
 /* Responsive Phone Frame */
 @media (max-width: 768px) {
     .phone-frame {
-        width: 330px;
+        width: 300px;
         height: 680px;
         border-radius: 35px;
     }
