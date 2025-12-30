@@ -412,6 +412,7 @@ body {
     text-align: center;
     box-shadow: 0 5px 20px var(--shadow);
     transition: transform var(--transition);
+    color: var(--text-primary);
 }
 
 .teacher-card:hover {
@@ -582,6 +583,7 @@ body {
     overflow: hidden;
     box-shadow: 0 5px 20px var(--shadow);
     transition: transform var(--transition);
+    color: var(--text-primary);
 }
 
 .notice-card:hover {
