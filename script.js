@@ -807,3 +807,140 @@ function downloadRoutinePDF() {
     printWindow.document.write(printContent);
     printWindow.document.close();
 }
+
+
+// ========================================
+// Phone Resize Functionality
+// ========================================
+
+function initPhoneResize() {
+    const phoneFrame = document.getElementById('phoneFrame');
+    const resizeHandle = document.getElementById('phoneResizeHandle');
+    
+    if (!phoneFrame) return;
+    
+    // Check if mobile (handle visible) or desktop (CSS resize)
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile && resizeHandle) {
+        // Mobile: Use custom resize handle
+        initMobileResize(phoneFrame, resizeHandle);
+    }
+    
+    // Restore saved size
+    restoreSavedSize(phoneFrame);
+    
+    // Save size on resize (for both mobile and desktop)
+    const resizeObserver = new ResizeObserver(() => {
+        const rect = phoneFrame.getBoundingClientRect();
+        localStorage.setItem('phoneWidth', rect.width);
+        localStorage.setItem('phoneHeight', rect.height);
+    });
+    resizeObserver.observe(phoneFrame);
+}
+
+function initMobileResize(phoneFrame, resizeHandle) {
+    let isResizing = false;
+    let startX, startY, startWidth, startHeight;
+    
+    // Minimum and maximum sizes
+    const minWidth = 200;
+    const maxWidth = 400;
+    const aspectRatio = 650 / 320; // height / width
+    
+    resizeHandle.addEventListener('mousedown', startResize);
+    resizeHandle.addEventListener('touchstart', startResize, { passive: false });
+    
+    function startResize(e) {
+        e.preventDefault();
+        isResizing = true;
+        
+        const rect = phoneFrame.getBoundingClientRect();
+        startWidth = rect.width;
+        startHeight = rect.height;
+        
+        if (e.type === 'touchstart') {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        } else {
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+        
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', stopResize);
+        document.addEventListener('touchmove', resize, { passive: false });
+        document.addEventListener('touchend', stopResize);
+        
+        // Add resizing class for visual feedback
+        phoneFrame.style.transition = 'none';
+        resizeHandle.style.background = '#4ade80';
+        resizeHandle.style.color = '#000';
+    }
+    
+    function resize(e) {
+        if (!isResizing) return;
+        e.preventDefault();
+        
+        let clientX, clientY;
+        if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        } else {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        }
+        
+        // Calculate new width based on mouse movement
+        const deltaX = clientX - startX;
+        const deltaY = clientY - startY;
+        
+        // Use the larger delta for proportional resize
+        const delta = Math.max(deltaX, deltaY);
+        
+        let newWidth = startWidth + delta;
+        
+        // Clamp to min/max
+        newWidth = Math.max(minWidth, Math.min(maxWidth, newWidth));
+        
+        // Calculate height maintaining aspect ratio
+        const newHeight = newWidth * aspectRatio;
+        
+        // Apply new size
+        phoneFrame.style.width = newWidth + 'px';
+        phoneFrame.style.height = newHeight + 'px';
+    }
+    
+    function stopResize() {
+        isResizing = false;
+        
+        document.removeEventListener('mousemove', resize);
+        document.removeEventListener('mouseup', stopResize);
+        document.removeEventListener('touchmove', resize);
+        document.removeEventListener('touchend', stopResize);
+        
+        // Remove resizing visual feedback
+        phoneFrame.style.transition = '';
+        resizeHandle.style.background = '';
+        resizeHandle.style.color = '';
+    }
+}
+
+function restoreSavedSize(phoneFrame) {
+    const savedWidth = localStorage.getItem('phoneWidth');
+    const savedHeight = localStorage.getItem('phoneHeight');
+    
+    if (savedWidth && savedHeight) {
+        const width = parseFloat(savedWidth);
+        const height = parseFloat(savedHeight);
+        
+        // Validate saved size
+        if (width >= 200 && width <= 450 && height >= 400 && height <= 900) {
+            phoneFrame.style.width = width + 'px';
+            phoneFrame.style.height = height + 'px';
+        }
+    }
+}
+
+// Initialize phone resize on DOM ready
+document.addEventListener('DOMContentLoaded', initPhoneResize);

@@ -1026,6 +1026,88 @@ body {
     border-radius: 36px;
 }
 
+/* Phone Resize Handle */
+.phone-resize-handle {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: nwse-resize;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    z-index: 20;
+}
+
+.phone-resize-handle:hover {
+    background: rgba(74, 222, 128, 0.3);
+    border-color: #4ade80;
+    transform: scale(1.1);
+}
+
+.phone-resize-handle:active {
+    background: #4ade80;
+    color: #000;
+}
+
+[data-theme="dark"] .phone-resize-handle {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Desktop: Hide mobile resize handle, enable CSS resize with visible grip */
+@media (min-width: 768px) {
+    .phone-resize-handle {
+        display: none;
+    }
+    
+    .phone-frame {
+        resize: both;
+        overflow: hidden;
+        min-width: 250px;
+        max-width: 450px;
+        min-height: 500px;
+        max-height: 900px;
+        position: relative;
+    }
+    
+    /* Visible resize grip at bottom-right corner */
+    .phone-frame::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.3) 50%);
+        border-radius: 0 0 36px 0;
+        cursor: nwse-resize;
+        z-index: 100;
+    }
+    
+    .phone-frame:hover::after {
+        background: linear-gradient(135deg, transparent 50%, rgba(74, 222, 128, 0.5) 50%);
+    }
+    
+    /* Add resize indicator icon */
+    .phone-wrapper-realistic::after {
+        content: '↘ রিসাইজ করুন';
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        font-size: 0.75rem;
+        color: rgba(255,255,255,0.6);
+        pointer-events: none;
+    }
+}
+
 .phone-home-indicator {
     position: absolute;
     bottom: 8px;
