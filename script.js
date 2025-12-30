@@ -275,7 +275,7 @@ function updateTeachersSection() {
     }
 
     teachersGrid.innerHTML = siteData.teachers.map(teacher => `
-        <div class="teacher-card animate-on-scroll">
+        <div class="teacher-card">
             <div class="teacher-avatar ${teacher.nameBn.includes('খাতুন') || teacher.nameBn.includes('বেগম') || teacher.nameBn.includes('আক্তার') ? 'female' : ''}">
                 ${teacher.imageUrl ? `<img src="${teacher.imageUrl}" alt="${teacher.nameBn}">` : '<i class="fas fa-user-tie"></i>'}
             </div>
@@ -313,7 +313,7 @@ function updateNoticesSection() {
     }
 
     noticeGrid.innerHTML = siteData.notices.slice(0, 4).map(notice => `
-        <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''} animate-on-scroll">
+        <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''}">
             <div class="notice-date">
                 <span class="day">${notice.day}</span>
                 <span class="month">${notice.month}</span>
