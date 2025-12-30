@@ -212,7 +212,8 @@ let siteData = {
     teachers: [],
     holidays: [],
     notices: [],
-    schoolInfo: {}
+    schoolInfo: {},
+    classRoutine: null
 };
 
 // Load JSON file
@@ -229,21 +230,24 @@ async function loadJSON(filename) {
 
 // Load all data
 async function loadAllSiteData() {
-    const [teachers, holidays, notices, schoolInfo] = await Promise.all([
+    const [teachers, holidays, notices, schoolInfo, classRoutine] = await Promise.all([
         loadJSON('teachers.json'),
         loadJSON('holidays.json'),
         loadJSON('notices.json'),
-        loadJSON('school_info.json')
+        loadJSON('school_info.json'),
+        loadJSON('class_routine.json')
     ]);
 
     if (teachers) siteData.teachers = teachers.teachers;
     if (holidays) siteData.holidays = holidays;
     if (notices) siteData.notices = notices.notices;
     if (schoolInfo) siteData.schoolInfo = schoolInfo;
+    if (classRoutine) siteData.classRoutine = classRoutine;
 
     // Update UI
     updateTeachersSection();
     updateNoticesSection();
+    updateClassRoutine();
     initCalendar();
 }
 
@@ -291,6 +295,82 @@ function updateNoticesSection() {
             </div>
         </div>
     `).join('');
+}
+
+// Update Class Routine Section
+function updateClassRoutine() {
+    const routineTabs = document.getElementById('routineTabs');
+    const routineHead = document.getElementById('routineHead');
+    const routineBody = document.getElementById('routineBody');
+    
+    if (!routineBody || !siteData.classRoutine) return;
+    
+    const data = siteData.classRoutine;
+    
+    // Create tabs
+    if (routineTabs && data.classes) {
+        routineTabs.innerHTML = data.classes.map((cls, index) => 
+            `<button class="tab-btn ${index === 0 ? 'active' : ''}" data-class-index="${index}">${cls.className}</button>`
+        ).join('');
+        
+        // Add click handlers
+        routineTabs.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                routineTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderRoutineTable(parseInt(btn.dataset.classIndex));
+            });
+        });
+    }
+    
+    // Render header
+    if (routineHead && data.periodTiming) {
+        const timing = data.periodTiming;
+        routineHead.innerHTML = `
+            <tr>
+                <th>দিন</th>
+                <th>১ম পিরিয়ড<br><small>${timing.period1.start}-${timing.period1.end}</small></th>
+                <th>২য় পিরিয়ড<br><small>${timing.period2.start}-${timing.period2.end}</small></th>
+                <th>৩য় পিরিয়ড<br><small>${timing.period3.start}-${timing.period3.end}</small></th>
+                <th>বিরতি<br><small>${timing.tiffinBreak.start}-${timing.tiffinBreak.end}</small></th>
+                <th>৪র্থ পিরিয়ড<br><small>${timing.period5.start}-${timing.period5.end}</small></th>
+            </tr>
+        `;
+    }
+    
+    // Render first class routine
+    renderRoutineTable(0);
+}
+
+function renderRoutineTable(classIndex) {
+    const routineBody = document.getElementById('routineBody');
+    if (!routineBody || !siteData.classRoutine) return;
+    
+    const classData = siteData.classRoutine.classes[classIndex];
+    if (!classData) return;
+    
+    const dayNames = {
+        sunday: 'রবিবার',
+        monday: 'সোমবার',
+        tuesday: 'মঙ্গলবার',
+        wednesday: 'বুধবার',
+        thursday: 'বৃহস্পতিবার'
+    };
+    
+    let html = '';
+    let isFirst = true;
+    
+    for (const [day, periods] of Object.entries(classData.routine)) {
+        html += `<tr>
+            <td>${dayNames[day]}</td>
+            ${periods.slice(0, 3).map(p => `<td>${p.subjectBn}</td>`).join('')}
+            ${isFirst ? '<td rowspan="5" class="break-cell">টিফিন</td>' : ''}
+            ${periods.slice(3).map(p => `<td>${p.subjectBn}</td>`).join('')}
+        </tr>`;
+        isFirst = false;
+    }
+    
+    routineBody.innerHTML = html;
 }
 
 
