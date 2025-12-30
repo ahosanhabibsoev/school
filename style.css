@@ -1205,6 +1205,213 @@ body {
     transform: translateY(0);
 }
 
+/* ========================================
+   App Guide Section Styles
+   ======================================== */
+.app-guide-section {
+    padding: 60px 0;
+    background: var(--bg-secondary);
+}
+
+.app-guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #1e3a5f, #0f172a);
+    border-radius: 16px;
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.app-guide-header:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.app-guide-header .section-title {
+    margin: 0;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+
+.app-guide-header .section-title i {
+    color: #4ade80;
+    font-size: 1.8rem;
+}
+
+.guide-toggle-icon {
+    color: #4ade80;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.app-guide-header.active .guide-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.app-guide-content {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.app-guide-content.hidden {
+    display: none;
+}
+
+/* Guide Item Styles */
+.guide-item {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(74, 222, 128, 0.1);
+    transition: all 0.3s ease;
+}
+
+.guide-item:hover {
+    border-color: rgba(74, 222, 128, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.guide-item.important {
+    border-color: rgba(255, 107, 107, 0.3);
+    background: linear-gradient(135deg, #2d1f1f, #1a1a2e);
+}
+
+.guide-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.guide-item-header:hover {
+    background: rgba(74, 222, 128, 0.05);
+}
+
+.guide-item.important .guide-item-header:hover {
+    background: rgba(255, 107, 107, 0.05);
+}
+
+.guide-item-header h4 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.guide-item-header h4 i {
+    color: #4ade80;
+    font-size: 1.1rem;
+    width: 24px;
+}
+
+.guide-item.important .guide-item-header h4 i {
+    color: #ff6b6b;
+}
+
+.guide-item-header > i {
+    color: #64748b;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.guide-item-header.active > i {
+    transform: rotate(180deg);
+    color: #4ade80;
+}
+
+.guide-item-content {
+    display: none;
+    padding: 0 24px 20px;
+    animation: slideDown 0.3s ease;
+}
+
+.guide-item-content.active {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.guide-item-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.guide-item-content > ul > li {
+    padding: 10px 0;
+    padding-left: 24px;
+    position: relative;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(100, 116, 139, 0.1);
+}
+
+.guide-item-content > ul > li:last-child {
+    border-bottom: none;
+}
+
+.guide-item-content > ul > li::before {
+    content: '•';
+    position: absolute;
+    left: 8px;
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.guide-item.important .guide-item-content > ul > li::before {
+    color: #ff6b6b;
+}
+
+.guide-item-content ul ul {
+    margin-top: 8px;
+    margin-left: 10px;
+    padding-left: 15px;
+    border-left: 2px solid rgba(74, 222, 128, 0.2);
+}
+
+.guide-item-content ul ul li {
+    padding: 6px 0;
+    padding-left: 15px;
+    position: relative;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.guide-item-content ul ul li::before {
+    content: '○';
+    position: absolute;
+    left: 0;
+    color: #64748b;
+    font-size: 0.7rem;
+}
+
+.guide-item-content strong {
+    color: #e2e8f0;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .nav-links {

@@ -694,6 +694,25 @@ function toggleCollapsible(header) {
     collapsible.classList.toggle('active');
 }
 
+// App Guide Toggle Functions
+function toggleAppGuide() {
+    const header = document.querySelector('.app-guide-header');
+    const content = document.getElementById('appGuideContent');
+    const icon = document.getElementById('guideToggleIcon');
+    
+    header.classList.toggle('active');
+    content.classList.toggle('hidden');
+}
+
+function toggleGuideItem(headerElement) {
+    const content = headerElement.nextElementSibling;
+    const isActive = content.classList.contains('active');
+    
+    // Toggle current item
+    headerElement.classList.toggle('active');
+    content.classList.toggle('active');
+}
+
 // Download Routine as PDF
 function downloadRoutinePDF() {
     // Get current active class tab
