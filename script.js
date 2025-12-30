@@ -261,22 +261,13 @@ async function loadAllSiteData() {
 // Update Teachers Section
 function updateTeachersSection() {
     const teachersGrid = document.querySelector('.teachers-grid');
-    console.log('Teachers Grid:', teachersGrid);
-    console.log('Teachers Data:', siteData.teachers);
     
-    if (!teachersGrid) {
-        console.error('Teachers grid element not found');
-        return;
-    }
-    
-    if (!siteData.teachers || siteData.teachers.length === 0) {
-        console.error('No teachers data available');
-        return;
-    }
+    if (!teachersGrid) return;
+    if (!siteData.teachers || siteData.teachers.length === 0) return;
 
     teachersGrid.innerHTML = siteData.teachers.map(teacher => `
         <div class="teacher-card">
-            <div class="teacher-avatar ${teacher.nameBn.includes('খাতুন') || teacher.nameBn.includes('বেগম') || teacher.nameBn.includes('আক্তার') ? 'female' : ''}">
+            <div class="teacher-avatar ${teacher.nameBn.includes('খাতুন') || teacher.nameBn.includes('বেগম') || teacher.nameBn.includes('আক্তার') ? 'female' : ''}" ${teacher.imageUrl ? `onclick="openGalleryPopup('${teacher.imageUrl}', '${teacher.nameBn}')"` : ''}>
                 ${teacher.imageUrl ? `<img src="${teacher.imageUrl}" alt="${teacher.nameBn}">` : '<i class="fas fa-user-tie"></i>'}
             </div>
             <h3>${teacher.nameBn}</h3>
@@ -292,27 +283,21 @@ function updateTeachersSection() {
             </div>
         </div>
     `).join('');
-    
-    console.log('Teachers section updated successfully');
 }
 
-// Update Notices Section
+// Update Notices Section - Show latest 5
 function updateNoticesSection() {
     const noticeGrid = document.querySelector('.notice-grid');
-    console.log('Notice Grid:', noticeGrid);
-    console.log('Notices Data:', siteData.notices);
     
-    if (!noticeGrid) {
-        console.error('Notice grid element not found');
-        return;
-    }
-    
-    if (!siteData.notices || siteData.notices.length === 0) {
-        console.error('No notices data available');
-        return;
-    }
+    if (!noticeGrid) return;
+    if (!siteData.notices || siteData.notices.length === 0) return;
 
-    noticeGrid.innerHTML = siteData.notices.slice(0, 4).map(notice => `
+    // Sort by date (latest first) and take 5
+    const sortedNotices = [...siteData.notices]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 5);
+
+    noticeGrid.innerHTML = sortedNotices.map(notice => `
         <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''}">
             <div class="notice-date">
                 <span class="day">${notice.day}</span>
@@ -326,8 +311,6 @@ function updateNoticesSection() {
             </div>
         </div>
     `).join('');
-    
-    console.log('Notices section updated successfully');
 }
 
 // Update Class Routine Section
@@ -702,4 +685,11 @@ async function loadAboutSection() {
     } catch (error) {
         console.error('Error loading about section:', error);
     }
+}
+
+
+// Collapsible Toggle Function
+function toggleCollapsible(header) {
+    const collapsible = header.parentElement;
+    collapsible.classList.toggle('active');
 }

@@ -175,16 +175,22 @@
                 </div>
             </div>
             
-            <div class="holiday-list animate-on-scroll">
-                <h4><i class="fas fa-calendar-times"></i> এই মাসের ছুটি</h4>
-                <div id="monthlyHolidayList">
+            <div class="holiday-list collapsible animate-on-scroll">
+                <h4 class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <i class="fas fa-calendar-times"></i> এই মাসের ছুটি
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </h4>
+                <div class="collapsible-content" id="monthlyHolidayList">
                     <!-- Holidays will be loaded here -->
                 </div>
             </div>
             
-            <div class="all-holidays animate-on-scroll">
-                <h4><i class="fas fa-list"></i> ২০২৬ সালের সকল ছুটি</h4>
-                <div class="holiday-table-wrapper">
+            <div class="all-holidays collapsible animate-on-scroll">
+                <h4 class="collapsible-header" onclick="toggleCollapsible(this)">
+                    <i class="fas fa-list"></i> ২০২৬ সালের সকল ছুটি
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </h4>
+                <div class="collapsible-content holiday-table-wrapper">
                     <table class="holiday-table" id="allHolidaysTable">
                         <thead>
                             <tr>
@@ -202,7 +208,6 @@
             </div>
         </div>
     </section>
-""
 
     <!-- Notice Section -->
     <section class="notice" id="notice">
@@ -212,7 +217,7 @@
             <div class="notice-grid" id="noticeGrid">
                 <!-- Notices will be loaded dynamically from notices.json -->
             </div>
-            <a href="#" class="btn btn-outline view-all-notices">
+            <a href="all-notices.html" class="btn btn-outline view-all-notices">
                 <i class="fas fa-list"></i> সকল নোটিশ দেখুন
             </a>
         </div>

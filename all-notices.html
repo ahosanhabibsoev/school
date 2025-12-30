@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সকল নোটিশ - ডেমো উচ্চ বিদ্যালয়</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .all-notices-page {
+            padding: 100px 0 50px;
+            min-height: 100vh;
+        }
+        .all-notices-grid {
+            display: grid;
+            gap: 20px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-school"></i>
+                <span>ডেমো উচ্চ বিদ্যালয়</span>
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="থিম পরিবর্তন">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="all-notices-page">
+        <div class="container">
+            <a href="index.html#notice" class="back-btn">
+                <i class="fas fa-arrow-left"></i> ফিরে যান
+            </a>
+            <h2 class="section-title">সকল নোটিশ</h2>
+            <p class="section-subtitle">বিদ্যালয়ের সকল ঘোষণা ও বিজ্ঞপ্তি</p>
+            <div class="all-notices-grid" id="allNoticesGrid">
+                <!-- All notices will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme Management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const icon = document.querySelector('#themeToggle i');
+            if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // Load All Notices
+        async function loadAllNotices() {
+            const grid = document.getElementById('allNoticesGrid');
+            try {
+                const response = await fetch('app_preview/data/notices.json');
+                const data = await response.json();
+                
+                const sortedNotices = data.notices
+                    .filter(n => n.isActive)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                grid.innerHTML = sortedNotices.map(notice => `
+                    <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''}">
+                        <div class="notice-date">
+                            <span class="day">${notice.day}</span>
+                            <span class="month">${notice.month}</span>
+                        </div>
+                        <div class="notice-content">
+                            <span class="notice-badge ${notice.type}">${notice.typeBn}</span>
+                            <h3>${notice.titleBn}</h3>
+                            <p>${notice.contentBn}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                grid.innerHTML = '<p>নোটিশ লোড করতে সমস্যা হয়েছে</p>';
+            }
+        }
+
+        initTheme();
+        loadAllNotices();
+    </script>
+</body>
+</html>
