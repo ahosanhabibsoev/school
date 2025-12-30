@@ -230,6 +230,8 @@ async function loadJSON(filename) {
 
 // Load all data
 async function loadAllSiteData() {
+    console.log('Loading all site data...');
+    
     const [teachers, holidays, notices, schoolInfo, classRoutine] = await Promise.all([
         loadJSON('teachers.json'),
         loadJSON('holidays.json'),
@@ -238,11 +240,16 @@ async function loadAllSiteData() {
         loadJSON('class_routine.json')
     ]);
 
+    console.log('Loaded teachers:', teachers);
+    console.log('Loaded notices:', notices);
+
     if (teachers) siteData.teachers = teachers.teachers;
     if (holidays) siteData.holidays = holidays;
     if (notices) siteData.notices = notices.notices;
     if (schoolInfo) siteData.schoolInfo = schoolInfo;
     if (classRoutine) siteData.classRoutine = classRoutine;
+
+    console.log('siteData after loading:', siteData);
 
     // Update UI
     updateTeachersSection();
@@ -254,7 +261,18 @@ async function loadAllSiteData() {
 // Update Teachers Section
 function updateTeachersSection() {
     const teachersGrid = document.querySelector('.teachers-grid');
-    if (!teachersGrid || !siteData.teachers.length) return;
+    console.log('Teachers Grid:', teachersGrid);
+    console.log('Teachers Data:', siteData.teachers);
+    
+    if (!teachersGrid) {
+        console.error('Teachers grid element not found');
+        return;
+    }
+    
+    if (!siteData.teachers || siteData.teachers.length === 0) {
+        console.error('No teachers data available');
+        return;
+    }
 
     teachersGrid.innerHTML = siteData.teachers.map(teacher => `
         <div class="teacher-card animate-on-scroll">
@@ -274,12 +292,25 @@ function updateTeachersSection() {
             </div>
         </div>
     `).join('');
+    
+    console.log('Teachers section updated successfully');
 }
 
 // Update Notices Section
 function updateNoticesSection() {
     const noticeGrid = document.querySelector('.notice-grid');
-    if (!noticeGrid || !siteData.notices.length) return;
+    console.log('Notice Grid:', noticeGrid);
+    console.log('Notices Data:', siteData.notices);
+    
+    if (!noticeGrid) {
+        console.error('Notice grid element not found');
+        return;
+    }
+    
+    if (!siteData.notices || siteData.notices.length === 0) {
+        console.error('No notices data available');
+        return;
+    }
 
     noticeGrid.innerHTML = siteData.notices.slice(0, 4).map(notice => `
         <div class="notice-card ${notice.type === 'urgent' ? 'urgent' : ''} animate-on-scroll">
@@ -295,6 +326,8 @@ function updateNoticesSection() {
             </div>
         </div>
     `).join('');
+    
+    console.log('Notices section updated successfully');
 }
 
 // Update Class Routine Section
